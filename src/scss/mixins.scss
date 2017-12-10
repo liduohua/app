@@ -1,0 +1,166 @@
+/*color variables */
+$yellow : #f9c701;
+$white : #fff;
+$gray : #999;
+@mixin text-truncation {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin vendor-prefix($property,$value){
+    @each $prefix in -webkit-,-moz-,-ms-,-o-,'' {
+        #{$prefix}#{$property} : $value;
+    }
+}
+
+@mixin position($param){
+    $p : map-get($param,p);
+    $t : map-get($param,t);
+    $r : map-get($param,r);
+    $b : map-get($param,b);
+    $l : map-get($param,l); 
+    $z : map-get($param,z);
+    @if($p){
+        position : $p;
+    }
+    @if($t){
+        top : $t;  
+    }
+    @if($r){
+        right : $r;
+    }
+    @if($b){
+        bottom : $b;
+    }
+    @if($l){
+        left : $l;
+    }
+    @if($z){
+        z-index : $z;
+    }  
+}
+/*
+ * 设置溢出内容滚动
+ * ios样式可参考https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#//apple_ref/css/property/-webkit-overflow-scrolling
+ */
+@mixin overflow-scroll($direction){
+    @if($direction){
+        overflow-#{$direction} : auto;
+    }@else{
+        overflow : auto; 
+    }
+    -webkit-overflow-scrolling : touch;
+}
+/*
+ * 细线，在微信钱包中的页面线条都是缩小一倍的，此处参考~V~
+ */
+/*@mixin hairline(@position, @color) {
+    %base-css{
+        content: '';
+        position: absolute;
+        display: block;
+        z-index: 15;
+        background-color: @color;
+    }
+    @if(@position == top || @position == left){
+        &:before {
+            @extend %base-css;
+            bottom: auto;
+            right: auto;
+            left: 0;
+            top: 0;
+            @if(@position == top){
+                height: 1px;
+                width: 100%;
+                transform-origin: 50% 0%;
+            }@else{
+                height: 100%;
+                width: 1px;
+                transform-origin: 0% 50%;
+            }    
+        }       
+    }@else{
+        &:after {
+            @extend %base-css;
+            @if(@position == bottom){
+                bottom: 0;
+                left: 0;
+                right: auto;
+                top: auto;
+                height: 1px;
+                width: 100%;
+                transform-origin: 50% 100%;
+            }@else{
+                top:0;
+                right : 0;
+                bottom:auto;
+                left:auto;
+                height: 100%;
+                width: 1px;
+                transform-origin: 100% 50%;
+            }    
+        }       
+    }
+}*/
+/*
+ * 动画关键帧
+ */
+@mixin keyframes($aniName){
+    @-webkit-keyframes #{$aniName}{
+        @content;
+    }
+    @-moz-keyframes #{$aniName}{
+        @content;
+    }
+    @-o-keyframes #{$aniName}{
+        @content;
+    }
+    @keyframes #{$aniName}{
+        @content;
+    }
+}
+
+@mixin box($param){
+  width: map-get($param,w);
+  height: map-get($param,h);
+  font-size: map-get($param,fs);
+  line-height: map-get($param,lh);
+  font-weight: map-get($param,fw);
+  background: map-get($param,bg);
+  color: map-get($param,c);
+  border-radius: map-get($param,bdr);
+  text-align: map-get($param,ta);
+  opacity: map-get($param,o);
+  float: map-get($param,fl);
+  text-shadow: map-get($param,ts);
+  box-shadow: map-get($param,bs);
+  display: map-get($param,d);
+  flex: map-get($param,fx);
+  margin: map-get($param,m);
+  padding: map-get($param,p);
+  border: map-get($param,br);
+}
+
+@mixin border($property,$color){
+  @if($property == 'all'){
+    border: 1px solid $color;
+  }@else {
+    @each $dir in $property {
+      border-#{$dir}: 1px solid $color;
+    }
+  }
+}
+
+@mixin clr-float(){
+    clear:both;
+        content:'';
+        display: block;
+    }
+    
+@mixin pull-left(){
+    float:left;
+}
+@mixin pull-right(){
+    float:right;
+}
