@@ -5,7 +5,7 @@
 <script>
 	import Index from './views/Index.vue';
 	export default {
-		components :{
+		components :{rrr
 			Index
 		}
 	}
