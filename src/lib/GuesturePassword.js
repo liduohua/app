@@ -164,7 +164,7 @@ export default class GuesturePassword extends Chart{
         }
         if(this.result.length == 0){
          	return;
-        }
+        
         this.stop = true;
         this.clearCanvas();
         this.drawLines();

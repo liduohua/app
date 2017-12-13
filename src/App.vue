@@ -1,9 +1,11 @@
 <template>
-	<Index></Index>
+	<div id="app">
+		<router-view></router-view>
+	</div>
+	
 </template>
 
 <script>
-	import Index from './views/Home.vue';
 	export default {
 		methods : {
 			resizeFont(){
@@ -18,7 +20,7 @@
 			this.resizeFont();
 		},
 		components : {
-			Index
+			
 		},
 	}
 </script>
