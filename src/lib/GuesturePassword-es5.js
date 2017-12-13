@@ -12,6 +12,7 @@
     	root.GuesturePassword = factory();
   	}
 }(this, function() {
+	'use strict';
 	function offset(el) {
         var left = -el.offsetLeft,
             top = -el.offsetTop;

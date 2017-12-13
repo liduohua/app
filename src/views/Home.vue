@@ -2,7 +2,7 @@
 	<div class="page">
 		<NavHeader ref="navHeader"></NavHeader>
 		<NavFooter></NavFooter>
-		<div class='content' style="top:0;transform: translateZ(0);" @scroll="onScroll">
+		<div ref="infiniteContent" class='content' style="top:0;transform: translateZ(0);" @scroll="onScroll" @infinite="loadBannerImgs">
 			<LoopImg></LoopImg>
             <div class="grid-panel">
                 <ul>
@@ -45,6 +45,7 @@
 	import NavFooter from '../components/NavFooter.vue';
 	import TopNews from '../components/TopNews.vue';
 	import LoopImg from '../components/LoopImg.vue';
+	import InfiniteScroll from '../lib/InfiniteScroll';
 	
 	export default {
 		components : {
@@ -65,10 +66,15 @@
 				this.$refs.navHeader.$el.style.background = 'rgba(' + Math.round(9 * changePercent) + ', ' +
 					Math.round(90 * changePercent) + ', ' + Math.round(170 * changePercent) + ',' + (0.2 + 0.8 * changePercent) + ')'
 			},
+			loadBannerImgs(){
+				alert();
+			},
 		},
 		mounted (){
-			
-		//console.log(this.$refs);
+			this.infiniteScroll = new InfiniteScroll(this.$refs.infiniteContent);
+		},
+		beforeDestroy (){
+			this.infiniteScroll.destroy();
 		},
 	}
 </script>

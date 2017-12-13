@@ -1,7 +1,7 @@
 import Chart from './Chart.js';
 
 function offset(el) {
-    var left = -el.offsetLeft,
+    let left = -el.offsetLeft,
         top = -el.offsetTop;
     while (el = el.offsetParent) {
         left -= el.offsetLeft;
@@ -14,17 +14,17 @@ function offset(el) {
 }
 	
 function __extends(SubClass,SuperClass){
-    for(var p in SuperClass){
+    for(let p in SuperClass){
     	if(SuperClass.hasOwnProperty(p)){
     		SubClass[p] = SuperClass[p];
     	}
     }
-    var Super = function(){
+    let Super = function(){
     	this.constructor = SubClass;
     };
     Super.prototype = SuperClass.prototype;
-    var __super = new Super();
-    for(var p in SubClass.prototype){
+    let __super = new Super();
+    for(let p in SubClass.prototype){
     	if(SubClass.prototype.hasOwnProperty(p)){
     		__super[p] = SubClass.prototype[p];
     	}
