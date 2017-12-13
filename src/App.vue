@@ -3,7 +3,7 @@
 </template>
 
 <script>
-	import Index from './views/Index.vue';
+	import Index from './views/Home.vue';
 	export default {
 		methods : {
 			resizeFont(){
@@ -11,7 +11,7 @@
 				let deviceWidth = htmlEl.getBoundingClientRect().width;
         		if(deviceWidth > 750) deviceWidth = 750;
         		htmlEl.style.fontSize = deviceWidth / 7.5 + 'px';
-			},
+			}, 
 		},
 		mounted(){ 
 			//alert(this.resizeFont);
