@@ -1,6 +1,8 @@
 <template>
 	<div id="app">
-		<router-view></router-view>
+		<transition>
+			<router-view></router-view>
+		</transition>
 	</div>
 	
 </template>
@@ -24,3 +26,11 @@
 		},
 	}
 </script>
+<style>
+	.v-enter{
+		
+	}
+	.v-enter-active{
+		
+	}
+</style>

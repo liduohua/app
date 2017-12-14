@@ -41,8 +41,7 @@
 		if(!el){ throw new Error('传入InfiniteScroll构造函数中的el不能为空！')}
 		//下一个InifinteScroll id
 
-		var nextInfiniteScrollId = el.getAttribute('data-infinite-scroll') ? el.infiniteScrollId
-			: cacheInfiniteScroll.length ;
+		var nextInfiniteScrollId = el.getAttribute('data-infinite-scroll-id') || cacheInfiniteScroll.length ;
 
 		//如果这个值在缓存中已经可以找到，就直接返回
 		if(cacheInfiniteScroll[nextInfiniteScrollId]){return cacheInfiniteScroll[nextInfiniteScrollId]}
@@ -95,19 +94,21 @@
 		//加载结束
 		end : function(noMoreData){
 			var self = this;
-			setTimeout(function(){
-				self.isLoading = false;
+			setTimeout(function(){//这里这么做是为了让vm框架先插入节点
 				if(noMoreData){
-					self.stop = true;
 					self.infinitePocket.innerHTML =  noMoreDataTpl;
+					self.stop = true;
 				}else{
 					self.infinitePocket.innerHTML =  loadMoreTpl;
 				}
+				self.isLoading = false;
 			},0);
 		},
 		refresh : function(){
+			this.stop = true;//先暂停(有些情况下刷新可能stop=false)，这样在改变提示时不会触发infinite事件
+			this.infinitePocket.innerHTML =  loadMoreTpl;
 			this.stop = false;
-			this.end();
+			this.isLoading = false;
 		},
 		onClick :  function(){
 			var currTpl = this.infinitePocket.innerHTML;

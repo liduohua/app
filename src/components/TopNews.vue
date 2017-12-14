@@ -6,9 +6,18 @@
                     <div class="swipe-wrap-item">鸡大胸200以上A2六合10（AB10001）<span>10%</span></div>
                 </div>
             </div>
-        <span class="right-arrow-icon">更多</span>
+       	<router-link to="/newList" class="right-arrow-icon" append>更多</router-link>
     </div>
 </template>
+<script>
+	export default {
+		methods : {
+			toNewsListView (){
+				alert();
+			}
+		}
+	}
+</script>
 <style lang="scss">
 	/*今日头条*/
     .top-news {

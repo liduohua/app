@@ -31,8 +31,7 @@ export default class InfiniteScroll {
 		}
 		//下一个InifinteScroll id
 
-		let nextInfiniteScrollId = el.getAttribute('data-infinite-scroll') ? el.infiniteScrollId :
-			 	cacheInfiniteScroll.length;
+		let nextInfiniteScrollId = el.getAttribute('data-infinite-scroll-id') || cacheInfiniteScroll.length ;
 
 		//如果这个值在缓存中已经可以找到，就直接返回
 		if(cacheInfiniteScroll[nextInfiniteScrollId]) {
@@ -86,21 +85,22 @@ export default class InfiniteScroll {
 		this.infinitePocket.removeEventListener('tap', this.onClickWrapper);
 	}
 	//加载结束
-	end(noMoreData) {
-		var self = this;
-		setTimeout(function() {
-			self.isLoading = false;
-			if(noMoreData) {
-				self.stop = true;
-				self.infinitePocket.innerHTML = noMoreDataTpl;
-			} else {
-				self.infinitePocket.innerHTML = loadMoreTpl;
+	end(noMoreData){
+		setTimeout( () => {//这里这么做是为了让vm框架先插入节点
+			if(noMoreData){
+				this.infinitePocket.innerHTML =  noMoreDataTpl;
+				this.stop = true;
+			}else{
+				this.infinitePocket.innerHTML =  loadMoreTpl;
 			}
-		}, 0);
+			this.isLoading = false;
+		},0);
 	}
-	refresh() {
+	refresh (){
+		this.stop = true;//先暂停(有些情况下刷新可能stop=false)，这样在改变提示时不会触发infinite事件
+		this.infinitePocket.innerHTML =  loadMoreTpl;
 		this.stop = false;
-		this.end();
+		this.isLoading = false;
 	}
 	onClick() {
 		let currTpl = this.infinitePocket.innerHTML;
@@ -143,8 +143,8 @@ export default class InfiniteScroll {
 			this.end(args[0]);
 		};
 		evt.infiniteScroll = this;
-		setTimeout(function() {
-			if(typeof self.callback === 'function') self.callback(evt);
+		setTimeout(() => {
+			if(typeof this.callback === 'function') this.callback(evt);
 			el.dispatchEvent(evt);
 		}, 0);
 	}
