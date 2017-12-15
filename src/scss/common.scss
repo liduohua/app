@@ -873,3 +873,40 @@ li {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
 }
+
+/*
+ * tab导航栏样式
+ */
+.nav-tab{
+    background-color: #fff;
+    border-bottom: 1px solid #ecedee;
+    height: .7rem;
+    display: table;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    background:#f3f7f9;
+}
+.nav-tab li {
+    box-sizing: border-box;
+    height: .7rem;
+    vertical-align: middle;
+    display: table-cell;
+    color: #2e2f33;
+    font-size: .25rem;
+    text-align: center;
+    position: relative;
+}
+.nav-tab li.active{
+    color : #2a7bc1;
+}
+.nav-tab li.active::after{
+    position: absolute;
+    content: '';
+    border-bottom: 5px solid #fff;
+    bottom: -1px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    left: 50%;
+    margin-left: -5px;
+}

@@ -1,10 +1,11 @@
-import Home from '../views/Home.vue';
+import Index from '../views/Index.vue';
 import NewsList from '../views/NewsList.vue';
 import GoodsClassification from '../views/GoodsClassification.vue';
+import BestSellerRank from '../views/BestSellerRank.vue';
 const routes = [
 	{
 		path : '/',
-		component : Home,
+		component : Index,
 		name : 'entry',
 	},
 	{
@@ -14,6 +15,10 @@ const routes = [
 	{
 		path : '/goodsClassification',
 		component : GoodsClassification,
+	},
+	{
+		path : '/bestSellerRank',
+		component : BestSellerRank,
 	},
 ];
 

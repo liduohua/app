@@ -1,13 +1,20 @@
 <template>
 	<div class="page">
-		<NavHeader ref="navHeader"></NavHeader>
+		<NavHeader ref="navHeader" background="rgba(0,0,0, 0.2)">
+			<a class="myspace"><img src="../assets/head-ico1.png" alt="" class="nav-ico"></a>
+        	<a class="message"><img src="../assets/head-ico2.png" alt="" class="nav-ico"></a>
+        	<div class="nav-search">
+            	<input />
+            	<p><img src='../assets/head-ico3.png' />琵琶有腿</p>
+        	</div>
+		</NavHeader>
 		<NavFooter></NavFooter>
 		<div ref="infiniteContent" class='content' style="top:0;transform: translateZ(0);" @scroll="onScroll" @infinite="loadBannerImgs">
 			<LoopImg></LoopImg>
             <div class="grid-panel">
                 <ul>
                     <li><img src="../assets/notice-icon.png" /><br/>公告</li>
-                    <li><img src="../assets/honor-icon.png" /><br/>畅销榜单</li>
+                    <li @click="toBestSellerRank"><img src="../assets/honor-icon.png" /><br/>畅销榜单</li>
                     <li><img src="../assets/gift-icon.png" /><br/>活动中心</li>
                     <li><img src="../assets/pay-icon.png" /><br/>付款管理</li>
                 </ul>
@@ -68,6 +75,9 @@
 			},
 			loadBannerImgs(){
 				alert();
+			},
+			toBestSellerRank(){
+				this.$router.push('bestSellerRank');
 			},
 		},
 		mounted (){

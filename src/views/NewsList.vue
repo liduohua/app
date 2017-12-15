@@ -1,9 +1,6 @@
 <template>
 <div class="page">
-    <div class="bar bar-nav">
-        <a class="fl back"><img src="../assets/head-ico4.png" alt="" class="nav-ico back"></a>
-        <h1>新闻列表</h1>
-    </div>
+    <NavHeader title="新闻列表"></NavHeader>
     <div class="content" @infinite="loadNewsList">
         <div class="news-item">
             <p class="news-title">！抓住股票大涨了，赶紧购买吧！抓住机会，大赚一笔机会，大赚一笔！</p>
@@ -21,12 +18,16 @@
 </div>
 </template>
 <script>
+	import NavHeader from '../components/NavHeader.vue';
 	export default {
+		components :{
+			NavHeader,
+		},
 		methods :{
 			loadNewsList(){
 				
 			}
-		}
+		},
 	}
 </script>
 <style>

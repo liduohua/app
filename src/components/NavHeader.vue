@@ -1,13 +1,33 @@
 <template>
-	<div class="bar bar-nav" style="background:rgba(0,0,0, 0.2)">
-        <a class="myspace"><img src="../assets/head-ico1.png" alt="" class="nav-ico"></a>
-        <a class="message"><img src="../assets/head-ico2.png" alt="" class="nav-ico"></a>
-        <div class="nav-search">
-            <input />
-            <p><img src='../assets/head-ico3.png' />琵琶有腿</p>
-        </div>
+	<div class="bar bar-nav" v-bind:style="{background}">
+        <slot></slot>
+        <template v-if='isHidden'>
+        	<a class="fl back"><img @click="goBack" src="../assets/head-ico4.png" alt="" class="nav-ico back"></a>
+        	<h1>{{title}}</h1>
+        </template>
     </div>
 </template>
+<script>
+	export default{
+		props : ['title','background'],
+		methods : {
+			goBack(){
+				this.$router.go(-1);
+			},
+		},
+		data (){
+			return {
+				isHidden : true,
+			}
+		},
+		created(){
+			if(this.background){
+				this.isHidden = false;
+			}
+			
+		}
+	}
+</script>
 <style scoped lang='scss'>
 
 
