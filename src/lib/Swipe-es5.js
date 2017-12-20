@@ -327,7 +327,7 @@
 			this.indicator && this.indicator.destroy();
 			this.stop();
 			if(this.firstClonedNode) {
-				this.firstClonedNode.pisScrollingentNode.removeChild(this.firstClonedNode);
+				this.firstClonedNode.parentNode.removeChild(this.firstClonedNode);
 				this.firstClonedNode = null;
 			}
 			this.container.removeEventListener('transitionend', this);

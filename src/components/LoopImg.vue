@@ -1,14 +1,10 @@
 <template>
 	<div class='swipe' ref='container'>
         <div class='swipe-wrap'>
-            <div class="swipe-wrap-item"><img src="../assets/loop1.png" style="width:100%;vertical-align: middle;" /></div>
-            <div class="swipe-wrap-item"><img src="../assets/loop2.png" style="width:100%;vertical-align: middle;" /></div>
-            <div class="swipe-wrap-item"><img src="../assets/loop1.png" style="width:100%;vertical-align: middle;" /></div>
+            <div class="swipe-wrap-item" v-for="item in loopImgList"><img :src="'../dist/assets/'+item.url" style="width:100%;vertical-align: middle;" /></div>
         </div>
         <div class="swipe-indicator" ref="indicator" data-bg-color="00bd16">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span v-for="item in loopImgList"></span>
         </div>
     </div>
 </template>
@@ -16,13 +12,42 @@
 	let Swiper = require('../lib/Swipe-es5.js').Swiper;
 	
 	export default {
+		data : function(){
+			return {
+				loopImgList : []
+			}
+		},
 		mounted (){
 			this.swiper = new Swiper(this.$refs.container, {
 				indicator :  this.$refs.indicator
 			});
 		},
+		methods : {
+			/*
+			 * 加载轮播图片
+			 */
+			async getLoopImgs(){
+				 this.$http.get('/loopImgs').then((response)=>{
+				 	
+				 }).catch((err)=>{
+				 	this.loopImgList = [
+				 		{url : 'test/loopImg/loop1.bmp'},
+				 		{url : 'test/loopImg/loop2.bmp'},
+				 		{url : 'test/loopImg/loop3.bmp'},
+				 		{url : 'test/loopImg/loop4.bmp'},
+				 		{url : 'test/loopImg/loop5.bmp'},
+				 		{url : 'test/loopImg/loop6.bmp'},
+				 		{url : 'test/loopImg/loop7.bmp'},
+				 	];
+				 	this.swiper.refresh();
+				 });
+			},
+		},
 		beforeDestroy (){
 			this.swiper.destroy();
+		},
+		created (){
+			this.getLoopImgs();
 		}
 	}
 </script>
@@ -60,6 +85,7 @@
     height: 0.1rem;
     border-radius: 0.1rem;
     background: #fff;
+    margin:5px;
 }
 
 </style>

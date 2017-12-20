@@ -27,17 +27,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="top-news">
-                <strong>今日头条：</strong>
-                <div id='vSwipe' class='swipe'>
-                    <div class='swipe-wrap'>
-                        <div class="swipe-wrap-item">鸡大胸200以上A2六合10（AB10001）<span>10%</span></div>
-                        <div class="swipe-wrap-item">鸡大胸200以上A2六合10（AB10001）<span>10%</span></div>
-                        <div class="swipe-wrap-item">鸡大胸200以上A2六合10（AB10001）<span>10%</span></div>
-                    </div>
-                </div>
-                <span class="right-arrow-icon">更多</span>
-            </div>
+            <TopNews></TopNews>
             <div class="h-scroll-panel mt10">
                 <div class="wrapper brand">
                     <ul>
@@ -175,9 +165,11 @@
 </template>
 <script>
 	import NavFooter from '../components/NavFooter.vue';
+	import TopNews from '../components/TopNews.vue';
 	export default {
 		components : {
 			NavFooter,
+			TopNews,
 		}
 	}
 </script>

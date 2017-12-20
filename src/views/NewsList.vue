@@ -30,27 +30,6 @@
 		},
 	}
 </script>
-<style>
-	.news-title{
-  font-size:0.3rem;
-  text-indent:2em;
-}
- .content{
-  background:#fff;
-}
-.news-content{
-  font-size:0.25rem;
-}
-.news-item{
-  border-bottom:1px solid #eee;
-  padding:5px;
-}
-.release-time{
-  text-align: right;
-  font-size: 0.2rem;
-  color: #999;
-}
-.news-item .news-title , .news-item .release-time{
-  margin:5px;
-}
+<style lang="scss">
+	@import '../scss/news.scss';
 </style>

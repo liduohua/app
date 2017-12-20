@@ -1,10 +1,13 @@
 <template>
 	<div id="app">
-		<transition>
-			<router-view></router-view>
-		</transition>
+		
+			<transition>
+				<keep-alive>
+				<router-view></router-view>
+				</keep-alive>
+			</transition>
+		
 	</div>
-	
 </template>
 
 <script>
@@ -18,7 +21,6 @@
 			}, 
 		},
 		mounted(){ 
-			//alert(this.resizeFont);
 			this.resizeFont();
 		},
 		components : {
