@@ -2,7 +2,7 @@
 	<div id="app">
 		
 			<transition>
-				<keep-alive>
+				<keep-alive :include="cacheComponents">
 				<router-view></router-view>
 				</keep-alive>
 			</transition>
@@ -11,7 +11,13 @@
 </template>
 
 <script>
+
 	export default {
+		data :()=>{
+			return {
+				cacheComponents : cache
+			}
+		},
 		methods : {
 			resizeFont(){
 				var htmlEl = document.documentElement;

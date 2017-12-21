@@ -3,6 +3,7 @@ import App from './App.vue';
 import './scss/normalize.css';
 import './scss/common.scss'
 import routes from './router';
+import store from './store';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import VueResource from 'vue-resource';
@@ -19,5 +20,6 @@ const router = new VueRouter({
 new Vue({ 
 	//el : '#app',
 	router,
+	store,
 	render : h => h(App)
 }).$mount('#app');

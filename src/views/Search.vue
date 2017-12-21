@@ -20,8 +20,10 @@
    </div>
 </template>
 <script>
+	//cache.push('search');
 	import NavHeader from '../components/NavHeader.vue';
 	export default{
+		name : 'search',
 		data : () =>{
 			return {
 				marketList : [],

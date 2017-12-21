@@ -602,3 +602,65 @@ li {
     left: 50%;
     margin-left: -5px;
 }
+
+/*开关按钮*/
+
+.hidden{
+    display:none !important;
+}
+.switch{
+    width:60px;
+    height:25px;
+    float:right;
+    border-radius: 20px;
+    transition-property: background ,border;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    background-clip:padding-box;
+    line-height: 25px;
+    position:relative;
+    background:#aaa;
+    display:inline-block;
+    font-size:15px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+.switch i{
+    font-style: normal;
+    display: inline-block;
+    color:#fff;
+}
+.switch .switch-handle{
+    border-radius:20px;
+    height:24px;
+    width:24px;
+    box-shadow:0 2px 5px #1d2088;
+    transition-property: left,right,transform,width;
+    transition-timing-function: ease-in-out;
+    background-clip:padding-box;
+    position:absolute;
+    z-index: 1;
+    transition-duration: .2s;
+    background:#fff;
+    left:0;
+    top:0;
+}
+.switch .switch-handle.switch-active{
+    width:38px;
+}
+.switch.switch-on .switch-handle.switch-active{
+    left:-13px;
+}
+.switch.switch-on{
+    background:#1d2088;
+}
+.switch .on{
+    padding-left:5px;
+    float:left;
+}
+.switch .off{
+    padding-right:5px;
+    float:right;
+}

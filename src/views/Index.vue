@@ -46,6 +46,7 @@
 	import InfiniteScroll from '../lib/InfiniteScroll';
 	
 	export default {
+		name : 'index',
 		data : () =>{
 			return {	
 				bannerImgList : [],
