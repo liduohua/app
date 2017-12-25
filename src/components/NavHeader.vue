@@ -1,15 +1,15 @@
 <template>
-	<div class="bar bar-nav" v-bind:style="{background}">
+	<div class="bar bar-nav" :class="bgClass" v-bind:style="{background}">
         <slot></slot>
         <template v-if='isHidden'>
-        	<a class="fl back"><img @click="goBack" src="../assets/head-ico4.png" alt="" class="nav-ico back"></a>
+        	<a class="fl back"><img  @click="goBack" src="../assets/head-ico4.png" alt="" class="nav-ico back"></a>
         	<h1>{{title}}</h1>
         </template>
     </div>
 </template>
 <script>
 	export default{
-		props : ['title','background'],
+		props : ['title','background','bgClass','isNotBack'],
 		methods : {
 			goBack(){
 				this.$router.go(-1);
@@ -24,7 +24,6 @@
 			if(this.background){
 				this.isHidden = false;
 			}
-			
 		}
 	}
 </script>

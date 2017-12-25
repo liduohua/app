@@ -234,36 +234,7 @@ li {
 
 /*底部导航*/
 
-.bar-footer {
-    background-color: #fff;
-    border-top: 1px solid #d0d6ec;
-    height: 1rem;
-    bottom: 0;
-    font-size: 0.18rem;
-    display: table;
-    width: 100%;
-    box-sizing: border-box;
-}
 
-.bar-footer a {
-    display: table-cell;
-    width: 1%;
-    text-align: center;
-    font-size: .18rem;
-    padding-top: .04rem;
-    color: #474958;
-}
-
-.bar-footer a img {
-    width: .5rem;
-    display: block;
-    margin: 0 auto .08rem;
-}
-
-.bar-footer a:active,
-.bar-footer a.active {
-    color: #009944;
-}
 
 
 
@@ -664,3 +635,42 @@ li {
     padding-right:5px;
     float:right;
 }
+
+.transparent{
+    background: transparent;
+}
+
+
+
+.list-block {
+        margin: 0;
+        font-size: .30rem;
+    }
+    .list-block ul {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        background: #fff;
+    }
+    .list-block ul li{
+        padding:15px 10px;
+        position: relative;
+        @include hairline(bottom , #ccc)
+        
+    }
+    .list-block ul li:active{
+        background:#eee;
+        transition: .3s;
+    }
+    .list-block ul li i.arrow-right{
+        position: absolute;
+        top:50%;
+        transform: translateY(-50%);
+        display: inline-block;
+        width:0.4rem;
+        height:0.4rem;
+        background:url('../assets/icon/i-list-arrow-right.png');
+        background-size:100%;
+        right:10px;
+    }

@@ -1,10 +1,6 @@
 <template>
 	<div class="page">
-
-		<div class="bar bar-nav transparent">
-			<a class="fl" href="index.html"><img src="./assets/head-ico4.png" alt="" class="nav-ico"></a>
-			<h1>登录</h1>
-		</div>
+		<NavHeader title="登录" bgClass="transparent"></NavHeader>
 		<div class="content">
 			<div class="login-bg"></div>
 			<div class="login">
@@ -18,32 +14,32 @@
 					<div class="login-form">
 						<ul >
 							<li>
-								<span><img src="./assets/login-form-ico1.png" alt=""></span>
+								<span><img src="../assets/login-form-ico1.png" alt=""></span>
 								<input type="text" value="13120888078">
 							</li>
 							<li class="yzm">
 								<p>获取验证码</p>
-								<span><img src="./assets/login-form-ico2.png" alt=""></span>
+								<span><img src="../assets/login-form-ico2.png" alt=""></span>
 								<input type="text">
 							</li>
 						</ul>
 						<ul style="display:none">
 							<li>
-								<span><img src="./assets/login-form-ico1.png" alt=""></span>
+								<span><img src="../assets/login-form-ico1.png" alt=""></span>
 								<input type="text" value="13120888078">
 							</li>
 							<li>
-								<span><img src="./assets/login-form-ico3.png" alt=""></span>
+								<span><img src="../assets/login-form-ico3.png" alt=""></span>
 								<input type="password" value="222222">
 							</li>
 						</ul>
 					</div>
 					<div class="findpwd">
-						<a>注册账号</a>
+						<router-link to="/reg">注册账号</router-link>
 						<a>找回密码</a>
 					</div>
 					<div class="login-btn">
-						<a href="tradeDetail.html">
+						<a>
 							<button type="submit">登 录</button>
 						</a>
 					</div>
@@ -55,6 +51,14 @@
 		</div>
 	</div>
 </template>
+<script>
+	import NavHeader from '../components/NavHeader.vue';
+	export default {
+		components : {
+			NavHeader,
+		},
+	}
+</script>
 <style>
 	.content {
   background-color: #f4f5f8;
@@ -140,12 +144,12 @@
 
 .login .findpwd {
   padding-top: .5rem;
-  font-size: .2rem;
+  font-size: .25rem;
   text-align: center;
 }
 
 .login .findpwd a {
-  color: #32323c;
+  color: #0894ec;
 }
 
 .login .findpwd a:first-child {

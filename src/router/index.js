@@ -1,3 +1,4 @@
+import guardRoute from './guardRoute.js';
 import my from './my.js';
 
 import Index from '../views/Index.vue';
@@ -11,12 +12,22 @@ import NotFound from '../views/NotFound.vue';
 import NewsContent  from '../views/NewsContent.vue';
 import Trade from '../views/Trade.vue';
 import StockDetail from '../views/StockDetail.vue';
+import Login from '../views/Login.vue';
+
+import Reg from '../views/register/Reg.vue';
+import PersonReg from '../views/register/PersonReg.vue';
+import EnterpriseReg from '../views/register/EnterpriseReg.vue';
+
 
 const routes = [
 	{
 		path : '/',
-		component : Index,
 		name : 'entry',
+		redirect : '/index'
+	},
+	{
+		path : '/index',
+		component : Index,
 	},
 	{
 		path : '*',
@@ -37,6 +48,7 @@ const routes = [
 	{
 		path : '/trade',
 		component : Trade,
+		beforeEnter : guardRoute,
 	},
 	{
 		path : '/bestSellerRank',
@@ -59,6 +71,22 @@ const routes = [
 		path : '/newsDetails/:id',
 		component : NewsContent,
 		props : true,
+	},
+	{
+		path : '/login',
+		component : Login,
+	},
+	{
+		path : '/reg',
+		component : Reg,
+	},
+	{
+		path : '/personReg',
+		component : PersonReg,
+	},
+	{
+		path : '/enterpriseReg',
+		component : EnterpriseReg,
 	}
 ];
 

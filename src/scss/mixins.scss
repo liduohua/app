@@ -55,22 +55,23 @@ $gray : #999;
 /*
  * 细线，在微信钱包中的页面线条都是缩小一倍的，此处参考~V~
  */
-/*@mixin hairline(@position, @color) {
-    %base-css{
+@mixin hairline($position, $color) {
+    @mixin base-css{
         content: '';
         position: absolute;
         display: block;
         z-index: 15;
-        background-color: @color;
+        background-color: $color;
     }
-    @if(@position == top || @position == left){
+    @if($position == 'top' or $position == 'left'){
         &:before {
-            @extend %base-css;
+            @include base-css;
             bottom: auto;
             right: auto;
             left: 0;
             top: 0;
-            @if(@position == top){
+            transform: scaleY(0.5);
+            @if($position == 'top'){
                 height: 1px;
                 width: 100%;
                 transform-origin: 50% 0%;
@@ -78,12 +79,15 @@ $gray : #999;
                 height: 100%;
                 width: 1px;
                 transform-origin: 0% 50%;
-            }    
+                
+            }   
+            
         }       
     }@else{
         &:after {
-            @extend %base-css;
-            @if(@position == bottom){
+            @include base-css;
+            transform: scaleY(0.5);
+            @if($position == 'bottom'){
                 bottom: 0;
                 left: 0;
                 right: auto;
@@ -102,7 +106,7 @@ $gray : #999;
             }    
         }       
     }
-}*/
+}
 /*
  * 动画关键帧
  */

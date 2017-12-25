@@ -14,15 +14,7 @@
                     <li><a>更多</a></li>
                 </ul>
             </div>
-            <div class="top-news">
-                <strong>今日头条：</strong>
-                <div id='vSwipe' class='swipe'>
-                    <div class='swipe-wrap'>
-                        <div class="swipe-wrap-item">鸡大胸200以上A2六合10（AB10001）<span>10%</span></div>
-                    </div>
-                </div>
-                <span class="right-arrow-icon">更多</span>
-            </div>
+            <TopNews></TopNews>
             <div class="mt10 dapan-info">
                 <div class="dapan-info-left">
                     <h1>288.99</h1>
@@ -173,7 +165,14 @@
     </div>
 </template>
 <script>
+	import TopNews from '../components/TopNews.vue';
 	export default {
+		components :{
+			TopNews ,
+		},
+		methods : {
+			
+		},
 		mounted(){
 			
 	

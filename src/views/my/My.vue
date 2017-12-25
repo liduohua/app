@@ -38,15 +38,33 @@
                 </ul>
             </div>
         </div>
-        <div class="mt10 m-list">
+        <div class="list-block">
             <ul>
-                <!--<li><a href="payManage.html"><span class="myspace-ico"><img src="./assets/myspace-ico1.png" alt=""></span>付款管理</a></li>-->
-                <!--<li><a href="salesReturnManage.html"><span class="myspace-ico"><img src="./assets/myspace-ico2.png" alt=""></span>退货管理</a></li>-->
+        		<router-link tag="li" to='/personReg'>账户管理<i class="arrow-right"></i></router-link>
+        		<router-link tag="li" to="mySelect">自选产品管理<i class="arrow-right"></i></router-link>
+        		<router-link tag="li" to="mySelect">商品信息查询<i class="arrow-right"></i></router-link>
+        		<router-link tag="li" to="/mySelect">交收管理<i class="arrow-right"></i></router-link>
+        		<router-link tag="li" to="/mySelect">自选产品管理<i class="arrow-right"></i></router-link>
+        		<li>
+                                                                     手势密码
+                    <div class="switch" style="display:inline-block;right:15px;">
+                        <i class="on hidden">ON</i>
+                        <i class="off hidden">OFF</i>
+                        <div class="switch-handle"></div>
+                    </div>
+                </li>
+                <router-link tag="li" to="/mySelect">系统设置<i class="arrow-right"></i></router-link>
+        	</ul>
+        </div>
+        <!--<div class="mt10 m-list">
+            <ul>
+                <li><a href="payManage.html"><span class="myspace-ico"><img src="./assets/myspace-ico1.png" alt=""></span>付款管理</a></li>
+                <li><a href="salesReturnManage.html"><span class="myspace-ico"><img src="./assets/myspace-ico2.png" alt=""></span>退货管理</a></li>
                 <li><a><span class="myspace-ico"><img src="../../assets/myspace-ico3.png" alt=""></span>账户管理</a></li>
                 <li><router-link to="mySelect"><span class="myspace-ico"><img src="../../assets/myspace-ico4.png" alt=""></span>自选产品管理</router-link></li>
                 <li><a><span class="myspace-ico"><img src="../../assets/myspace-ico4.png" alt=""></span>商品信息查询</a></li>
                 <li><a ><span class="myspace-ico"><img src="../../assets/myspace-ico4.png" alt=""></span>交收管理</a></li>
-                <!--<li><a href="messageManage.html"><span class="myspace-ico"><img src="./assets/myspace-ico5.png" alt=""></span>消息盒子管理</a></li>-->
+                <li><a href="messageManage.html"><span class="myspace-ico"><img src="./assets/myspace-ico5.png" alt=""></span>消息盒子管理</a></li>
                 <li>
                     <a></span>手势密码</a>
                     <div class="switch" style="display:inline-block;">
@@ -57,7 +75,7 @@
                 </li>
                 <li><a><span class="myspace-ico"><img src="../../assets/myspace-ico6.png" alt=""></span>系统设置</a></li>
             </ul>
-        </div>
+        </div>-->
     </div>
 </div>
 </template>

@@ -1,15 +1,6 @@
 <template>
 	 <div class="page">
-        <div class="bar bar-nav">
-            <div class="bar bar-nav" style="background:rgba(0,0,0, 0.2)">
-                <a class="myspace"><img src="../assets/head-ico1.png" alt="" class="nav-ico"></a>
-                <a class="message"><img src="../assets/head-ico2.png" alt="" class="nav-ico"></a>
-                <div class="nav-search">
-                    <input />
-                    <p><img src='../assets/head-ico3.png' />琵琶有腿</p>
-                </div>
-            </div>
-        </div>
+        <NavHeader title="交易行情" :isBack="false"></NavHeader>
         <NavFooter></NavFooter>
         <div class="content">
             <div class="h-scroll-panel">
@@ -46,7 +37,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="layout-panel">
+            <div class="layout-panel" @click="toTradeDetail">
                 <div class="two-level-classification">
                     <ul>
                         <li class="active">琵琶腿</li>
@@ -207,11 +198,18 @@
 </template>
 <script>
 	import NavFooter from '../components/NavFooter.vue';
+	import NavHeader from '../components/NavHeader.vue';
 	import TopNews from '../components/TopNews.vue';
 	export default {
 		components : {
 			NavFooter,
 			TopNews,
+			NavHeader,
+		},
+		methods :{
+			toTradeDetail(){
+				this.$router.push('stockDetail');
+			}
 		}
 	}
 </script>

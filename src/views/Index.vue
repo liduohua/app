@@ -195,6 +195,7 @@
         .banner img {
             width: 100%;
             vertical-align: middle;
+            border-radius: 3px;
         }
 
         .banner .view-more-detial {
@@ -211,6 +212,7 @@
             font-size: 0.18rem;
             color: #fff;
             vertical-align: bottom;
+            border-radius: 3px;
         }
 
         .banner .view-more-detial span {
