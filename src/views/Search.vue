@@ -36,7 +36,7 @@
 		},
 		methods :{
 			onClick(){
-				alert(this.code);
+				this.$router.push('newList');
 			},
 			onSearch(){
 				

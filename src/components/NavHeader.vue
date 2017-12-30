@@ -1,5 +1,5 @@
 <template>
-	<div class="bar bar-nav" :class="bgClass" v-bind:style="{background}">
+	<div class="bar bar-nav" :class="className" v-bind:style="{background}">
         <slot></slot>
         <template v-if='isHidden'>
         	<a class="fl back"><img  @click="goBack" src="../assets/head-ico4.png" alt="" class="nav-ico back"></a>
@@ -9,9 +9,10 @@
 </template>
 <script>
 	export default{
-		props : ['title','background','bgClass','isNotBack'],
+		props : ['title','background','className','isNotBack'],
 		methods : {
 			goBack(){
+				this.$store.commit('deleteView',this.$route.meta.viewName);//当退出栈时当前视图不缓存
 				this.$router.go(-1);
 			},
 		},
@@ -21,7 +22,7 @@
 			}
 		},
 		created(){
-			if(this.background){
+			if(this.background && !this.title){
 				this.isHidden = false;
 			}
 		}

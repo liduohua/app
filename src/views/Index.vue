@@ -155,7 +155,24 @@
 <style scoped lang="scss">
 @import '../scss/mixins.scss';
 	/*功能按钮面板*/
-
+		.content{
+			background:#fff;
+		}
+		.content::before{
+			content : '';
+			width : 1px;
+			float:left;
+			height:calc(100% + 1px);
+			margin-left:-1px;
+			display:block;
+		}
+		/*.content::after{
+			content : '';
+			width : 100%;
+			clear : both;
+			display:block;
+			
+		}*/
         .fun-btn-grid-panel {
             display: table;
             width: 100%;

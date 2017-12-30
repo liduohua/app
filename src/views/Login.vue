@@ -1,7 +1,9 @@
 <template>
 	<div class="page">
-		<NavHeader title="登录" bgClass="transparent"></NavHeader>
-		<div class="content">
+		<NavHeader title="登录" className="transparent" ref="navHeader" background="rgba(11,68,187, 0)">
+		
+		</NavHeader>
+		<div class="content" @scroll="onScroll">
 			<div class="login-bg"></div>
 			<div class="login">
 				<div class="login-tab">
@@ -54,6 +56,22 @@
 <script>
 	import NavHeader from '../components/NavHeader.vue';
 	export default {
+		methods :{
+			/*
+			 * 处理顶部导航栏渐变
+			 */
+			onScroll(e){
+				var currTarget = e.currentTarget;
+				var fontSize = parseInt(document.documentElement.style.fontSize)
+				var needMoveHeight = fontSize * 1.2;
+				var changePercent = currTarget.scrollTop / needMoveHeight
+				if (changePercent > 1) {
+					changePercent = 1;
+				}
+				this.$refs.navHeader.$el.style.background = 'rgba(' + Math.round(11 * 1) + ', ' +
+					Math.round(68 * 1) + ', ' + Math.round(187 * 1) + ',' + ( 1 * changePercent) + ')'
+			},
+		},
 		components : {
 			NavHeader,
 		},
@@ -178,7 +196,7 @@
   font-size: .15rem;
   color: #5b5c6c;
   text-align: center;
-  position: fixed;
+  position: absolute;
   width: 100%;
   bottom: .4rem;
 }

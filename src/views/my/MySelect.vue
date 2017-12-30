@@ -124,6 +124,7 @@
 <script>
 	import NavHeader from '../../components/NavHeader.vue';
 	export default{
+		name : 'my-select',
 		data : function(){
 			return {
 				code : ''

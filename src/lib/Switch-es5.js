@@ -1,8 +1,21 @@
-;(function(win){
+(function(root, factory) {
+	//AMD
+	if (typeof define === 'function' && define.amd)  {
+		define(['exports'], function(exports) {
+			exports.Switch = root.Switch = factory();
+		});
+		//Node.js
+	} else if (typeof exports !== 'undefined') {
+		exports.Switch = factory( );
+		//Browser
+	} else {
+		root.Switch = factory();
+	}
+})(this, function() {
 	'use strict';
 	function Switch(options){
 		options = options || {};
-		this.switchEl = typeof options.el == 'string' ? document.querySelector(options.el) : el;
+		this.switchEl = typeof options.el == 'string' ? document.querySelector(options.el) : options.el;
 		this.switchOn = !!options.switchOn;
 		this.switchHandleEl = this.switchEl.querySelector('.switch-handle');
 		this.switchOn ? this.on() : this.off();
@@ -15,6 +28,13 @@
 			el.addEventListener('touchmove', this);
 			el.addEventListener('touchend', this);
 			el.addEventListener('touchcancel', this);
+		},
+		destroy :function(){
+			var el = this.switchEl;
+			el.removeEventListener('touchstart', this);
+			el.removeEventListener('touchmove', this);
+			el.removeEventListener('touchend', this);
+			el.removeEventListener('touchcancel', this);
 		},
 		handleEvent : function(e){
 			switch ( e.type ) {
@@ -56,5 +76,5 @@
 			}
 		}
 	};
-	win.Switch = Switch;
-})(window);
+	return Switch;
+});

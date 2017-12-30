@@ -1,23 +1,26 @@
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import {afterEach,beforeEach} from './guardRoute';
+
 import guardRoute from './guardRoute.js';
 import my from './my.js';
 
-import Index from '../views/Index.vue';
-import NewsList from '../views/NewsList.vue';
-import GoodsClassification from '../views/GoodsClassification.vue';
-import TradeMarket from '../views/TradeMarket.vue';
-import BestSellerRank from '../views/BestSellerRank.vue';
-import Search from '../views/Search.vue';
-import MyIndex from '../views/my/MyIndex.vue';
-import NotFound from '../views/NotFound.vue';
-import NewsContent  from '../views/NewsContent.vue';
-import Trade from '../views/Trade.vue';
-import StockDetail from '../views/StockDetail.vue';
-import Login from '../views/Login.vue';
+import Index from '../views/Index.vue';//首页
+import NewsList from '../views/NewsList.vue';//新闻列表
+import GoodsClassification from '../views/GoodsClassification.vue';//商品分类
+import TradeMarket from '../views/TradeMarket.vue';//交易行情
+import BestSellerRank from '../views/BestSellerRank.vue';//畅销榜
+import Search from '../views/Search.vue';//搜索
+import MyIndex from '../views/my/MyIndex.vue';//个人中心首页视图
+import NotFound from '../views/NotFound.vue';//404页面
+import NewsDetail  from '../views/NewsDetail.vue';//新闻详情
+import Trade from '../views/Trade.vue';//交易
+import StockDetail from '../views/StockDetail.vue';//股票详情
+import Login from '../views/Login.vue';//登录
 
-import Reg from '../views/register/Reg.vue';
-import PersonReg from '../views/register/PersonReg.vue';
-import EnterpriseReg from '../views/register/EnterpriseReg.vue';
-
+import Reg from '../views/register/Reg.vue';//注册
+import PersonReg from '../views/register/PersonReg.vue';//个人注册
+import EnterpriseReg from '../views/register/EnterpriseReg.vue';//企业注册
 
 const routes = [
 	{
@@ -28,6 +31,10 @@ const routes = [
 	{
 		path : '/index',
 		component : Index,
+		meta : {
+			viewName : 'index',
+			title : '云冻批',
+		},
 	},
 	{
 		path : '*',
@@ -57,6 +64,10 @@ const routes = [
 	{
 		path : '/search',
 		component : Search,
+		meta : {
+			viewName : 'search',
+			title : '搜索',
+		},
 	},
 	{
 		path : '/stockDetail',
@@ -65,11 +76,15 @@ const routes = [
 	{
 		path : '/my',
 		component : MyIndex,
-		children : my
+		children : my,
+		meta : {
+			viewName : 'my',
+			title : '个人中心',
+		},
 	},
 	{
-		path : '/newsDetails/:id',
-		component : NewsContent,
+		path : '/newsDetail/:id',
+		component : NewsDetail,
 		props : true,
 	},
 	{
@@ -90,4 +105,15 @@ const routes = [
 	}
 ];
 
-export default routes;
+
+Vue.use(VueRouter);
+const router = new VueRouter({
+	routes,
+	mode : 'history'
+});
+import store from '../store';
+router.afterEach((to,from)=>{
+	afterEach(to,store);
+});//入栈时将视图压入栈
+router.beforeEach(beforeEach);//
+export default router;

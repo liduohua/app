@@ -179,6 +179,7 @@
 }
 .regist-foot {
     height: 2.28rem;
+        bottom: 0;
 }
 .regist-foot p {
     margin: .3rem 0;

@@ -5,7 +5,10 @@
     @include vendor-prefix(user-select,none);
     @include vendor-prefix(box-sizing,border-box);
 }
-
+/*输入框不能阻止选择否则ios无法输入*/
+input ,textarea{
+    @include vendor-prefix(user-select,initial);
+}
 body {
     @include position(( p : absolute,t:0,r:0,b:0,l:0));
     overflow: hidden;
@@ -640,37 +643,49 @@ li {
     background: transparent;
 }
 
-
-
+/*列表*/
 .list-block {
-        margin: 0;
-        font-size: .30rem;
-    }
-    .list-block ul {
-        position: relative;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        background: #fff;
-    }
-    .list-block ul li{
-        padding:15px 10px;
-        position: relative;
-        @include hairline(bottom , #ccc)
-        
-    }
-    .list-block ul li:active{
-        background:#eee;
-        transition: .3s;
-    }
-    .list-block ul li i.arrow-right{
-        position: absolute;
-        top:50%;
-        transform: translateY(-50%);
-        display: inline-block;
-        width:0.4rem;
-        height:0.4rem;
-        background:url('../assets/icon/i-list-arrow-right.png');
-        background-size:100%;
-        right:10px;
-    }
+    margin: 0;
+    font-size: .30rem;
+}
+.list-block ul {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background: #fff;
+}
+.list-block ul li{
+    position: relative;
+    height: 45px;
+    line-height: 45px;
+    @include hairline(bottom , #ccc);  
+    padding-left:15px; 
+}
+.list-block ul li:active{
+    background:#eee;
+    transition: .3s;
+}
+.list-block ul li.disabled:active{
+    background:transparent;
+}
+.list-block-arrow-right{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width:0.4rem;
+    height:0.4rem;
+    background:url('../assets/icon/i-list-arrow-right.png');
+    background-size:100%;
+    right:10px;
+}
+.list-block-icon{
+    width:0.5rem;
+    height:0.5rem;
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-left:5px;
+    display:inline-block;
+    background-size:100% !important;
+}

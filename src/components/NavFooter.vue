@@ -8,19 +8,21 @@
      </div>
 </template>
 <style scoped lang='scss'>
+@import '../scss/mixins.scss';
 .bar-footer {
     background-color: #fff;
-    border-top: 1px solid #d0d6ec;
+    /*border-top: 1px solid #d0d6ec;*/
     height: 1rem;
     bottom: 0;
     font-size: 0.22rem;
     display: table;
     width: 100%;
     box-sizing: border-box;
+    @include hairline(top , #d0d6ec);
 }
 .bar-footer a {
     display: table-cell;
-    width: 1%;
+    width: 20%;
     text-align: center;
    
     padding-top: .04rem;

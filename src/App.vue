@@ -1,24 +1,28 @@
 <template>
 	<div id="app">
-		
-			<transition>
-				<keep-alive :include="cacheComponents">
+		<transition>
+			<keep-alive :include="cacheViews">
 				<router-view></router-view>
-				</keep-alive>
-			</transition>
-		
+			</keep-alive>
+		</transition>
 	</div>
 </template>
 
 <script>
-
+	import {mapMutations} from 'vuex';
 	export default {
 		data :()=>{
 			return {
-				cacheComponents : cache
+				
 			}
 		},
+		computed : {
+			cacheViews(){
+				return this.$store.state.cacheViews;
+			} 
+		},
 		methods : {
+			//...mapMutations(['increment']),
 			resizeFont(){
 				var htmlEl = document.documentElement;
 				let deviceWidth = htmlEl.getBoundingClientRect().width;
@@ -32,13 +36,22 @@
 		components : {
 			
 		},
+		created(){
+		
+		}
 	}
 </script>
 <style>
 	.v-enter{
-		
+		opacity:0;
+		transform: translateX(100%);
 	}
 	.v-enter-active{
-		
+		transform: translateX(0%);
+		transition:all 0.3s ease;
+	}
+	.v-leave-active{
+		opacity:0;
+		transition:all 0.3s ease;
 	}
 </style>

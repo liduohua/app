@@ -1,11 +1,12 @@
 <template>
 	<div class="page">
-		<NavHeader title="注册"></NavHeader>
+		<NavHeader title="订单管理"></NavHeader>
         <div class="content">
             <div class="list-block">
             	<ul>
-        			<router-link tag="li" to='/personReg'>登录密码修改<i class="arrow-right"></i></router-link>
-        			<router-link tag="li" to="/enterpriseReg">手势密码设置<i class="arrow-right"></i></router-link>
+        			<router-link tag="li" to='/dayTraded'>当日成交<i class="arrow-right"></i></router-link>
+        			<router-link tag="li" to="/dayEntrust">当日委托<i class="arrow-right"></i></router-link>
+        			<router-link tag="li" to="/historyEntrust">历史成交<i class="arrow-right"></i></router-link>
         		</ul>
             </div>
         </div>
@@ -15,7 +16,7 @@
 	import NavHeader from '../../components/NavHeader.vue';
 
 	export default {
-		name : 'account-manage',
+		name : 'order-manage',
 		components : {
 			NavHeader,
 			
