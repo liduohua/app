@@ -4,8 +4,8 @@
         <div class="content">
             <div class="list-block">
             	<ul>
-        			<router-link tag="li" to='/personReg'>个人注册<i class="arrow-right"></i></router-link>
-        			<router-link tag="li" to="/enterpriseReg">企业注册<i class="arrow-right"></i></router-link>
+        			<router-link tag="li" to='/personReg'>个人注册<i class="list-block-arrow-right"></i></router-link>
+        			<router-link tag="li" to="/enterpriseReg">企业注册<i class="list-block-arrow-right"></i></router-link>
         		</ul>
             </div>
         </div>

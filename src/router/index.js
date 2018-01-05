@@ -109,6 +109,10 @@ const routes = [
 Vue.use(VueRouter);
 const router = new VueRouter({
 	routes,
+	scrollBehavior (to,from,savePosition){
+		console.log(savePosition);
+		return {x : 40,y:40}
+	},
 	mode : 'history'
 });
 import store from '../store';

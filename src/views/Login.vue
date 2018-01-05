@@ -1,38 +1,37 @@
 <template>
 	<div class="page">
 		<NavHeader title="登录" className="transparent" ref="navHeader" background="rgba(11,68,187, 0)">
-		
 		</NavHeader>
 		<div class="content" @scroll="onScroll">
 			<div class="login-bg"></div>
 			<div class="login">
 				<div class="login-tab">
-					<ul>
+					<ul @click="slideTab">
 						<li class="active">手机快捷登录</li>
 						<li>账号密码登录</li>
 					</ul>
 				</div>
 				<div class="form-wrapper">
 					<div class="login-form">
-						<ul >
+						<ul v-if="isShow">
 							<li>
 								<span><img src="../assets/login-form-ico1.png" alt=""></span>
-								<input type="text" value="13120888078">
+								<input type="text" v-model.trim='phoneNo'>
 							</li>
 							<li class="yzm">
 								<p>获取验证码</p>
 								<span><img src="../assets/login-form-ico2.png" alt=""></span>
-								<input type="text">
+								<input type="text" v-model.trim='phoneCheckCode'>
 							</li>
 						</ul>
-						<ul style="display:none">
+						<ul v-else>
 							<li>
 								<span><img src="../assets/login-form-ico1.png" alt=""></span>
-								<input type="text" value="13120888078">
+								<input type="text" v-model.trim='userName'>
 							</li>
 							<li>
 								<span><img src="../assets/login-form-ico3.png" alt=""></span>
-								<input type="password" value="222222">
+								<input type="password" v-model.trim='password'>
 							</li>
 						</ul>
 					</div>
@@ -41,9 +40,7 @@
 						<a>找回密码</a>
 					</div>
 					<div class="login-btn">
-						<a>
-							<button type="submit">登 录</button>
-						</a>
+						<button type="submit" @click="toLogin">登 录</button>
 					</div>
 				</div>
 			</div>
@@ -55,8 +52,80 @@
 </template>
 <script>
 	import NavHeader from '../components/NavHeader.vue';
+	const Modal = require('../lib/Modal-es5').Modal;
 	export default {
+		data : () => ({
+			isShow : true,//
+			phoneNo : '',
+			phoneCheckCode : '',
+			userName : '',
+			password : '',
+		}),
 		methods :{
+			validateArgs (){
+				if(this.isShow){
+					if(this.phoneNo === ''){
+						new Modal().alert('手机号不能为空！');
+						return false;
+					}
+					if(this.phoneCheckCode === ''){
+						new Modal().alert('手机验证码不能为空！');
+						return false;
+					}
+				}else{
+					if(this.userName === ''){
+						new Modal().alert('用户名不能为空！');
+						return false;
+					}
+					if(this.password === ''){
+						new Modal().alert('密码不能为空！');
+						return false;
+					}
+				}
+				return true;
+			},
+			/*
+			 * 登录
+			 */
+			async toLogin(e){
+				if(!this.validateArgs()){
+					return;
+				}
+				if(this.isShow){
+					this.$http.post('phoneLogin' ,{
+						phoneNo : this.phoneNo,
+						phoneCheckCode : this.phoneCheckCode
+					}).then((response)=>{
+					
+					}).catch((err)=>{
+						this.$router.back();
+					});
+				}else{
+					this.$http.post('userNameLogin' ,{
+						userName : this.userName,
+						password : this.password
+					}).then((response)=>{
+					
+					}).catch((err)=>{
+						alert();
+						this.$router.back();
+					});
+				}	
+			},
+			/*
+			 * 切换登录方式
+			 */
+			slideTab(e){
+				var target = e.target;
+                if (target.tagName.toLowerCase() !== 'li') return;
+                var ul = target.parentNode;
+                var preActive = ul.querySelector('.active');
+                if (target == preActive) return;
+                	preActive.classList.toggle('active');
+                target.classList.toggle('active');
+                this.isShow = !this.isShow;
+			},
+			
 			/*
 			 * 处理顶部导航栏渐变
 			 */
@@ -75,6 +144,9 @@
 		components : {
 			NavHeader,
 		},
+		mounted (){
+			
+		}
 	}
 </script>
 <style>
@@ -113,6 +185,7 @@
 
 .login .login-tab ul li.active {
   border-bottom-color: #1d2088;
+  color:#1d2088;
 }
 
 .login .login-form {

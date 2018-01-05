@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 let store = {
 	state :{
 		cacheViews : ['index'],
-		loginInfo : {},
+		userInfo : {},
 	},
 	mutations :{
 		//添加需要缓存的视图
