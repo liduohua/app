@@ -51,69 +51,11 @@
                     <p>涨跌幅：<span class="green">-232%</span >涨跌额：<span class="green">12323</span> <button>删除产品</button></p>
                 </div>
             </div>
-            <div class="goods-item">
-                <div class="item-cell goods-img"></div>
-                <div class="item-cell item-cell-content">
-                    <h5>大鸡腿快到碗里来 <span>成交总量：3232323</span></h5>
-                    <table>
-                        <tr>
-                            <td>卖价一:23</td>
-                            <td>卖价二:233</td>
-                            <td>卖量一:233</td>
-                            <td>卖量二:23</td>
-                        </tr>
-                    </table>
-                    <p>涨跌幅：<span class="green">-232%</span >涨跌额：<span class="green">12323</span> <button>删除产品</button></p>
-                </div>
-            </div>
-            <div class="goods-item">
-                <div class="item-cell goods-img"></div>
-                <div class="item-cell item-cell-content">
-                    <h5>大鸡腿快到碗里来 <span>成交总量：3232323</span></h5>
-                    <table>
-                        <tr>
-                            <td>卖价一:23</td>
-                            <td>卖价二:233</td>
-                            <td>卖量一:233</td>
-                            <td>卖量二:23</td>
-                        </tr>
-                    </table>
-                    <p>涨跌幅：<span class="green">-232%</span >涨跌额：<span class="green">12323</span> <button>删除产品</button></p>
-                </div>
-            </div>
-            <div class="goods-item">
-                <div class="item-cell goods-img"></div>
-                <div class="item-cell item-cell-content">
-                    <h5>大鸡腿快到碗里来 <span>成交总量：3232323</span></h5>
-                    <table>
-                        <tr>
-                            <td>卖价一:23</td>
-                            <td>卖价二:233</td>
-                            <td>卖量一:233</td>
-                            <td>卖量二:23</td>
-                        </tr>
-                    </table>
-                    <p>涨跌幅：<span class="green">-232%</span >涨跌额：<span class="green">12323</span> <button>删除产品</button></p>
-                </div>
-            </div>
-            <div class="goods-item">
-                <div class="item-cell goods-img"></div>
-                <div class="item-cell item-cell-content">
-                    <h5>大鸡腿快到碗里来 <span>成交总量：3232323</span></h5>
-                    <table>
-                        <tr>
-                            <td>卖价一:23</td>
-                            <td>卖价二:233</td>
-                            <td>卖量一:233</td>
-                            <td>卖量二:23</td>
-                        </tr>
-                    </table>
-                    <p>涨跌幅：<span class="green">-232%</span >涨跌额：<span class="green">12323</span> <button>删除产品</button></p>
-                </div>
-            </div>
+            
+            
 
         </div>
-        <div class="my-select">
+        <div class="add-select-panel">
             <h4>添加自选</h4>
             <p>随时跟踪自选产品最新动态</p>
             <router-link to="/search" tag="button" type="button"  class="btn">立即添加</router-link>
@@ -141,55 +83,48 @@
 		
 	}
 </script>
-<style>
-	 .content{
-        background:#eee;
-    }
-.my-select {
-    width: 100%;
-    height: 2.4rem;
-    padding-top: .20rem;
-    background-color: #fff;
-    text-align: center;
-    margin: 0.1rem 0;
-    position: absolute;
-
-    bottom:0;
-    width:100%;
-    left:0;
-}
-
-.my-select h4 {
-    font-size: .3rem;
-    margin: 0;
-    padding: 0;
-    font-weight: 400;
-}
-
-.my-select p {
-    margin: .15rem 0;
-    padding: 0;
-    font-size: .18rem;
-}
-
-.my-select button.btn {
-    display: block;
-    width: 2.8rem;
-    height: .8rem;
-    line-height: .8rem;
-    color: #fff;
-    font-size: .3rem;
-    margin: 0 auto;
-    background: -webkit-linear-gradient(124deg, #007936, #00be54);
-    box-shadow: 0 1px 4px 0 #009944;
-    border: none;
-    border-radius: .4rem;
-}
+<style scoped lang="scss">
+	@import '../../scss/mixins.scss';
+	.add-select-panel {
+    	width: 100%;
+    	height: 2.4rem;
+    	padding-top: .20rem;
+    	background-color: #fff;
+    	text-align: center;
+    	position: absolute;
+    	bottom:0;
+    	width:100%;
+    	left:0;
+	}
+	.add-select-panel h4 {
+    	font-size: .3rem;
+    	margin: 0;
+    	padding: 0;
+    	font-weight: 400;
+	}
+	.add-select-panel p {
+    	margin: .15rem 0;
+   	 	padding: 0;
+    	font-size: .18rem;
+	}
+	.add-select-panel button.btn {
+    	display: block;
+    	width: 2.8rem;
+    	height: .8rem;
+    	line-height: .8rem;
+    	color: #fff;
+    	font-size: .3rem;
+    	margin: 0 auto;
+        background: -webkit-linear-gradient(124deg, #007936, #00be54);
+    	box-shadow: 0 1px 4px 0 #009944;
+    	border: none;
+    	border-radius: .4rem;
+	}
 
 .layout-panel .goods-list-wrapper {
     position: absolute;
     top: 0;
-    bottom: 2.4rem;
+    bottom: 2.2rem;
     right: 0;
     left: 0;
     background-color: #fff;
@@ -204,9 +139,10 @@
     box-sizing: border-box;
     width: 100%;
     padding: 0.2rem;
-    border-bottom: 1px solid #e7e7f1;
     font-size: 0.18rem;
     background-color: #fff;
+    @include hairline(bottom , #e7e7f1);  
+    position: relative;
 }
 
 .goods-item table {

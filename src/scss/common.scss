@@ -567,15 +567,30 @@ li {
     color : #2a7bc1;
 }
 .nav-tab li.active::after{
-    position: absolute;
+    /*position: absolute;
     content: '';
     border-bottom: 5px solid #fff;
     bottom: -1px;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     left: 50%;
-    margin-left: -5px;
+    margin-left: -5px;*/
 }
+.tab-content{
+        font-size: 0.23rem;
+        position: absolute;
+        top: 0.7rem;
+        left: 0px;
+        bottom: 0;
+        right: 0px;
+        z-index:0;
+        visibility: hidden;
+    }
+       
+        .tab-content.show{
+            visibility: visible;
+            z-index:1;
+        }
 
 /*开关按钮*/
 

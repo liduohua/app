@@ -1,9 +1,6 @@
 <template>
 	<div class="page">
-    <div class="bar bar-nav">
-        <a class="fl" href="index.html"><img src="../assets/head-ico4.png" alt="" class="nav-ico"></a>
-        <h1>入金</h1>
-    </div>
+    <NavHeader title="提现"></NavHeader>
     <div class="content">
        <p class="account-amout">可取金额：<strong>23423423424</strong></p>
         <div class="input-box">

@@ -16,11 +16,11 @@
                     <li><img src="../assets/notice-icon.png" /><br/>公告</li>
                     <li @click="toBestSellerRank"><img src="../assets/honor-icon.png" /><br/>畅销榜单</li>
                     <li><img src="../assets/gift-icon.png" /><br/>活动中心</li>
-                    <li><img src="../assets/pay-icon.png" /><br/>付款管理</li>
+                    <li @click="toPayManage"><img src="../assets/pay-icon.png" /><br/>支付管理</li>
                 </ul>
                 <ul>
                     <li><img src="../assets/my-select-icon.png" /><br/>自选产品</li>
-                    <li><img src="../assets/order-icon.png" /><br/>我的订单</li>
+                    <li @click="toOrderManage"><img src="../assets/order-icon.png" /><br/>我的订单</li>
                     <li><img src="../assets/global-icon.png" /><br/>全球指数</li>
                     <li>
                         <a href="allg.html"><img src="../assets/all-icon.png" /><br/>全部功能</a>
@@ -72,7 +72,7 @@
             	return [
                 	{imgName : 'notice-icon.png', descText : '公告',id : 0},
                 	{imgName : 'best-sell-icon.png', descText : '畅销榜单',id : 1,url:'home/bestSellerRank'},
-                	{imgName : 'activity-center-icon.png', descText : '活动中心',id : 2},
+                	{imgName : 'activity-center-icon.png', descText : '活动中心',id : 2,url:'my/payManage'},
                 	{imgName : 'pay-manage-icon.png', descText : '付款管理',id : 3},
                 	{imgName : 'my-select-icon.png', descText : '自选产品',id : 4},
                 	{imgName : 'my-order-icon.png', descText : '我的订单',id : 5},
@@ -139,6 +139,12 @@
 			 */
 			toBestSellerRank(){
 				this.$router.push('bestSellerRank');
+			},
+			toPayManage(){
+				this.$router.push('/my/payManage');
+			},
+			toOrderManage(){
+				this.$router.push('/my/orderManage');
 			},
 		},
 		mounted (){

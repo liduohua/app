@@ -78,10 +78,8 @@ $gray : #999;
             }@else{
                 height: 100%;
                 width: 1px;
-                transform-origin: 0% 50%;
-                
+                transform-origin: 0% 50%;     
             }   
-            
         }       
     }@else{
         &:after {
@@ -154,6 +152,38 @@ $gray : #999;
       border-#{$dir}: 1px solid $color;
     }
   }
+}
+@mixin triangle_icon($param) {
+  $direction:map-get($param,direction);
+  $w:map-get($param,width);
+  $h:map-get($param,height);
+  $color:map-get($param,color);
+
+  content:'';
+  display: block;
+  width:0;
+  height:0;
+
+  border-#{$direction}:0;
+
+  @if( $direction== 'top'){
+    border-left: $w / 2 solid transparent;
+    border-right: $w / 2 solid transparent;
+    border-bottom: $h / 2 solid $color;
+  }@else if $direction== 'bottom'{
+    border-left: $w / 2 solid transparent;
+    border-right: $w / 2 solid transparent;
+    border-top: $h / 2 solid $color;
+  }@else if $direction== 'right'{
+    border-top: $h / 2 solid transparent;
+    border-bottom: $h / 2 solid transparent;
+    border-left: $w / 2 solid $color;
+  }@else if $direction== 'left'{
+    border-top: $h / 2 solid transparent;
+    border-bottom: $h / 2 solid transparent;
+    border-right: $w / 2 solid $color;
+  }
+
 }
 
 @mixin clr-float(){

@@ -3,61 +3,7 @@
         <NavHeader title="交易行情" :isBack="false"></NavHeader>
         <NavFooter></NavFooter>
         <div class="content">
-            <div class="h-scroll-panel">
-                <div class="wrapper one-level-classification">
-                    <ul>
-                        <li class="active">鸡产品</li>
-                        <li>鸭产品</li>
-                        <li>猪产品</li>
-                        <li>牛羊产品</li>
-                        <li>海鲜产品</li>
-                        <li>海鲜产品</li>
-                        <li>海鲜产品</li>
-                        <li>海鲜产品</li>
-                        <li>海鲜产品</li>
-                    </ul>
-                </div>
-            </div>
-            <!--<div class="ad-img-large"></div>
-				<div class="ad-img-small"></div>-->
-            <div class="h-scroll-panel">
-                <div class="wrapper brand">
-                    <ul>
-                        <li class="active">全 部</a>
-                        </li>
-                        <li>昌 源</li>
-                        <li>超 和</li>
-                        <li>春 歌</li>
-                        <li>春 雪</li>
-                        <li>大 成</li>
-                        <li>大 成</li>
-                        <li>大 成</li>
-                        <li>大 成</li>
-                        <li>大 成</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="layout-panel" @click="toTradeDetail">
-                <div class="two-level-classification">
-                    <ul>
-                        <li class="active">琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                        <li>琵琶腿</li>
-                    </ul>
-                </div>
+            <BrandAndClassify>
                 <div class="goods-list-wrapper">
                     <table class="table-head">
                         <thead>
@@ -192,19 +138,19 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </BrandAndClassify>
         </div>
     </div>
 </template>
 <script>
 	import NavFooter from '../components/NavFooter.vue';
 	import NavHeader from '../components/NavHeader.vue';
-	import TopNews from '../components/TopNews.vue';
+	import BrandAndClassify from '../components/BrandAndClassify.vue';
 	export default {
 		components : {
 			NavFooter,
-			TopNews,
 			NavHeader,
+			BrandAndClassify,
 		},
 		methods :{
 			toTradeDetail(){
@@ -214,56 +160,7 @@
 	}
 </script>
 <style>
-	.h-scroll-panel {
-            background-color: #fff;
-            border-bottom: 1px solid #e9e9e9;
-            line-height: 0;
-            height: 0.8rem;
-        }
-        
-        .h-scroll-panel .wrapper {
-            overflow: hidden;
-            margin: 0 .3rem;
-            overflow: hidden;
-        }
-        
-        .h-scroll-panel .wrapper ul {
-            line-height: 0rem;
-            white-space: nowrap;
-            display: inline-block;
-        }
-        
-        .h-scroll-panel .wrapper ul li {
-            line-height: .8rem;
-            margin-right: .3rem;
-            color: #2e2f33;
-            padding: 0 .1rem;
-            font-size: .25rem;
-            display: inline-block;
-            position: relative;
-        }
-        
-        .h-scroll-panel .wrapper ul li.active::after {
-            content: '';
-            background: #22ac38;
-            display: inline-block;
-            width: 100%;
-            height: 0.05rem;
-            width: 100%;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-        }
-        
-        .layout-panel {
-            position: absolute;
-            top: 1.6rem;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-        }
-        
-        .layout-panel .two-level-classification {
+        .list-layout-panel .two-level-classification {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -271,7 +168,7 @@
             overflow: hidden;
         }
         
-        .layout-panel .two-level-classification ul li {
+        .list-layout-panel .two-level-classification ul li {
             height: .8rem;
             color: #2e2f33;
             line-height: .8rem;
@@ -281,12 +178,12 @@
             width: 1.8rem;
         }
         
-        .layout-panel .two-level-classification ul li.active {
+        .list-layout-panel .two-level-classification ul li.active {
             color: #22ac38;
             background-color: #fff;
         }
         
-        .layout-panel .goods-list-wrapper {
+        .list-layout-panel .goods-list-wrapper {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -297,9 +194,9 @@
             overflow: auto;
         }
         
-        .layout-panel .goods-list-wrapper table {}
+        .list-layout-panel .goods-list-wrapper table {}
         
-        .layout-panel .goods-list-wrapper table th {
+        .list-layout-panel .goods-list-wrapper table th {
             color: #191717;
             font-size: 0.24rem;
             text-align: center;
@@ -307,16 +204,16 @@
             height: 0.6rem;
         }
         
-        .layout-panel .goods-list-wrapper table th .click-to-enter {
+        .list-layout-panel .goods-list-wrapper table th .click-to-enter {
             color: #191717;
             font-size: 0.18rem;
         }
         
-        .layout-panel .goods-list-wrapper table th:first-child {
+        .list-layout-panel .goods-list-wrapper table th:first-child {
             text-align: left;
         }
         
-        .layout-panel .goods-list-wrapper .table-content {
+        .list-layout-panel .goods-list-wrapper .table-content {
             position: absolute;
             top: 0.6rem;
             bottom: 0;
@@ -324,7 +221,7 @@
             overflow: auto;
         }
         
-        .layout-panel .goods-list-wrapper .table-content table td {
+        .list-layout-panel .goods-list-wrapper .table-content table td {
             color: #111010;
             font-size: 0.25rem;
             text-align: center;
@@ -336,31 +233,31 @@
             padding-right: 0.05rem;
         }
         
-        .layout-panel .goods-list-wrapper .table-content table td:first-child {
+        .list-layout-panel .goods-list-wrapper .table-content table td:first-child {
             text-align: left;
             padding-left: 0rem;
         }
         
-        .layout-panel .goods-list-wrapper .table-content table td.name {
+        .list-layout-panel .goods-list-wrapper .table-content table td.name {
             font-size: 0.23rem;
         }
         
-        .layout-panel .goods-list-wrapper .table-content table td.green {
+        .list-layout-panel .goods-list-wrapper .table-content table td.green {
             color: #22ac38;
         }
         
-        .layout-panel .goods-list-wrapper .table-content table td.red {
+        .list-layout-panel .goods-list-wrapper .table-content table td.red {
             color: #ff0000;
         }
         
-        .layout-panel .goods-list-wrapper .table-content table td .code {
+        .list-layout-panel .goods-list-wrapper .table-content table td .code {
             font-size: 0.2rem;
             color: #b1b1b1;
             padding-right: 0.1rem;
             vertical-align: bottom;
         }
         
-        .layout-panel .goods-list-wrapper .table-content table td .btn {
+        .list-layout-panel .goods-list-wrapper .table-content table td .btn {
             font-size: 0.18rem;
             color: #fff;
             background: #1d2088;

@@ -1,9 +1,24 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-	</body>
-</html>
+<template>
+	<div class="page">
+		<NavHeader title="当日成交"></NavHeader>
+		<div class="content">
+			<ScrollTable></ScrollTable>
+		</div>
+	</div>
+</template>
+<script>
+	import NavHeader from '../../components/NavHeader.vue';
+	import ScrollTable from '../../components/ScrollTable.vue';
+	export default {
+		data : ()=>({
+			tabContentIndex : 0
+		}),
+		methods : {
+			
+		},
+		components : {
+			NavHeader,
+			ScrollTable,
+		}
+	}
+</script>

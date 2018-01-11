@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-    <NavHeader title="账单查询"></NavHeader>
+    <NavHeader title="资金流水"></NavHeader>
     <div class="content">
        
     </div>

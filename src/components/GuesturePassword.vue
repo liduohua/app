@@ -3,11 +3,6 @@
 		
 	</canvas>
 </template>
-<style lang="scss">
-	canvas{
-		width:100%;
-	}
-</style>
 <script>
 	import GuesturePassword from '../lib/GuesturePassword.js';
 	export default{
@@ -16,3 +11,11 @@
 		},
 	}
 </script>
+<style lang="scss" scoped>
+	canvas{
+		width:100%;
+		//top:50%;
+  		//margin-top:-50%;
+  		//position:absolute;
+	}
+</style>

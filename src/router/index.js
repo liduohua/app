@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import {afterEach,beforeEach} from './guardRoute';
+import loginGuard ,{afterEachGuard,beforeEachGuard} from './guardRoute';
 
-import guardRoute from './guardRoute.js';
+
 import my from './my.js';
 
 import Index from '../views/Index.vue';//首页
@@ -55,11 +55,15 @@ const routes = [
 	{
 		path : '/trade',
 		component : Trade,
-		beforeEnter : guardRoute,
+		beforeEnter : loginGuard,
 	},
 	{
 		path : '/bestSellerRank',
 		component : BestSellerRank,
+		meta : {
+			viewName : 'bestSellerRank',
+			title : '畅销榜',
+		},
 	},
 	{
 		path : '/search',
@@ -109,15 +113,15 @@ const routes = [
 Vue.use(VueRouter);
 const router = new VueRouter({
 	routes,
-	scrollBehavior (to,from,savePosition){
-		console.log(savePosition);
-		return {x : 40,y:40}
-	},
 	mode : 'history'
 });
 import store from '../store';
 router.afterEach((to,from)=>{
-	afterEach(to,store);
-});//入栈时将视图压入栈
-router.beforeEach(beforeEach);//
+	afterEachGuard(to,store,router);
+});
+//入栈时将视图压入栈
+router.beforeEach((to,from,next) => {
+	beforeEachGuard(to,from,next,router);
+});
+
 export default router;

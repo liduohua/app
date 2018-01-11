@@ -5,6 +5,19 @@ let store = {
 	state :{
 		cacheViews : ['index'],
 		userInfo : {},
+		nextRoute : null,
+	},
+	getters : {
+		validateLogin : state => {
+			if(state.userInfo.userName){
+				return true;
+			}else{
+				return false;
+			}
+		},
+		clientName : state =>{
+			return state.userInfo.clientName || '--';
+		},
 	},
 	mutations :{
 		//添加需要缓存的视图
@@ -22,6 +35,20 @@ let store = {
 			}
 			console.log(state.cacheViews);
 		},
+		//用户登录
+		userLogin(state,userInfo){
+			state.userInfo = userInfo;
+		},
+		exitLogin(state){
+			state.userInfo = {};
+		},
+		saveNextRoute(state,route){
+			state.nextRoute = route;
+		},
+		delNextRoute(state,route){
+			state.nextRoute = null;
+		}
+		
 	},
 	actions : {
 		

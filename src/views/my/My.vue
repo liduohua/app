@@ -14,26 +14,26 @@
             	</div>
             	<div class="grid-nav">
                 	<ul class="">
-                    	<li>
-                       	 	<img src="../../assets/myspace-nav1.png" alt=""> 支付管理
-                    	</li>
+                		<router-link tag="li" to="payManage">
+                        	<img src="../../assets/myspace-nav1.png" alt=""> 支付管理
+                    	</router-link>
                     	<router-link tag="li" to="orderManage">
                         	<img src="../../assets/myspace-nav4.png" alt=""> 订单管理
                     	</router-link>
                     	<router-link tag="li" to="assetsInfo">
                         	<img src="../../assets/myspace-nav2.png" alt=""> 资产信息
                     	</router-link>
-                    	<li>
+                    	<router-link tag="li" to="queryBill">
                         	<img src="../../assets/myspace-nav3.png" alt=""> 查询账单
-                    	</li>
+                    	</router-link>
                 	</ul>
             	</div>
         	</div>
         	<div class="list-block">
             	<ul>
-        			<router-link tag="li" to='/personReg'><i class="list-block-icon account-manage"></i>账户管理<i class="list-block-arrow-right"></i></router-link>
+        			<router-link tag="li" to='accountManage'><i class="list-block-icon account-manage"></i>账户管理<i class="list-block-arrow-right"></i></router-link>
         			<router-link tag="li" to="mySelect"><i class="list-block-icon manage"></i>自选产品管理<i class="list-block-arrow-right "></i></router-link>
-        			<router-link tag="li" to="mySelect"><i class="list-block-icon goods-info-query"></i>商品信息查询<i class="list-block-arrow-right"></i></router-link>
+        			<router-link tag="li" to="queryGoodsInfo"><i class="list-block-icon goods-info-query"></i>商品信息查询<i class="list-block-arrow-right"></i></router-link>
         			<router-link tag="li" to="/mySelect"><i class="list-block-icon manage"></i>交收管理<i class="list-block-arrow-right"></i></router-link>
         			<router-link tag="li" to="/mySelect"><i class="list-block-icon manage"></i>自选产品管理<i class="list-block-arrow-right"></i></router-link>
         			<li class="disabled">
@@ -46,7 +46,7 @@
                     	</div>
                 	</li>
                 	<router-link tag="li" to="/mySelect"><i class="list-block-icon settings"></i>系统设置<i class="list-block-arrow-right"></i></router-link>
-                	<li class="exit-login">退出登录</li>
+                	<li class="exit-login" @click="exitLogin">退出登录</li>
         		</ul>
         	</div>
     	</div>
@@ -70,6 +70,10 @@
 			this.scrollTop = this.$refs.content.scrollTop ;
 		},
 		methods : {
+			exitLogin(e){
+				this.$store.commit('exitLogin');
+				this.$router.push('/login');
+			},
 			/*
 			 * 处理顶部导航栏渐变
 			 */
@@ -98,6 +102,7 @@
                 }
             });
 		},
+		
 		beforeDestroy(){
 			alert();
 			this.switch.destroy();

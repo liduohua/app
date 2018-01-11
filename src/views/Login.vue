@@ -16,7 +16,7 @@
 						<ul v-if="isShow">
 							<li>
 								<span><img src="../assets/login-form-ico1.png" alt=""></span>
-								<input type="text" v-model.trim='phoneNo'>
+								<input type="number" v-model.trim='phoneNo'>
 							</li>
 							<li class="yzm">
 								<p>获取验证码</p>
@@ -107,7 +107,16 @@
 					}).then((response)=>{
 					
 					}).catch((err)=>{
-						alert();
+						var userInfo = {
+							userName : '李大爷',
+							id : '123524342',
+							datetime : new Date(),
+							vip : 1,
+							clientName : '万小芳'
+							
+						}
+						this.$store.commit('userLogin',userInfo);
+						this.$store.commit('saveNextRoute',this.nextRoute);
 						this.$router.back();
 					});
 				}	
@@ -143,6 +152,12 @@
 		},
 		components : {
 			NavHeader,
+		},
+		created (){
+			//先保存，然后删掉，这样按返回键时就可以正常返回，而登录成功后，再重新给他赋值，这样就可以跳到登录之后的页面
+			this.nextRoute = this.$store.state.nextRoute;
+		
+			this.$store.commit('delNextRoute');
 		},
 		mounted (){
 			

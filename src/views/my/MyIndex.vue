@@ -1,6 +1,6 @@
 <template>
 	<transition name="fade">
-		<keep-alive >
+		<keep-alive :include="cacheViews">
 			<router-view></router-view>
 		</keep-alive>   
   </transition>

@@ -106,7 +106,7 @@
         position: absolute;
         right: 0.8rem;
         top: 0;
-      
+      	overflow: hidden;
     }
 
     .top-news .swipe:active {
