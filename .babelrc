@@ -1,0 +1,13 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+      }
+    }],
+    "stage-3"
+  ],
+  "plugins": ["transform-object-rest-spread","syntax-object-rest-spread", "transform-runtime"],
+  
+}

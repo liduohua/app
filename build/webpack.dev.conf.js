@@ -42,7 +42,7 @@ const devWebpackConfig = merge(baseWebpackConfig,{
 		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin(),
-		new webpack.NoEmitOnErrorsPlugin(),
+		//new webpack.NoEmitOnErrorsPlugin(),
 		new HtmlWebpackPlugin({
 			filename : 'index.html',
 			template : 'index.html',
