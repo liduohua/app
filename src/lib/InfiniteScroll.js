@@ -143,9 +143,9 @@ export default class InfiniteScroll {
 			this.end(args[0]);
 		};
 		evt.infiniteScroll = this;
-		setTimeout(() => {
-			if(typeof this.callback === 'function') this.callback(evt);
-			el.dispatchEvent(evt);
-		}, 0);
-	}
+    setTimeout(() => {
+      if(typeof this.callback === 'function') this.callback(evt);
+      el.dispatchEvent(evt)
+    }, 0)
+  }
 }

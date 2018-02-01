@@ -10,7 +10,7 @@
 	import NavHeader from '../../components/NavHeader.vue';
 	import ScrollTable from '../../components/ScrollTable.vue';
 	export default {
-		data : ()=>({
+		data : () => ({
 			tabContentIndex : 0
 		}),
 		methods : {

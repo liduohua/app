@@ -1,13 +1,13 @@
 <template>
 <div class="page" >
-	<NavHeader title="交易"></NavHeader>
+	<NavHeader title="交易" :isHiddenBack="true"></NavHeader>
 	<NavFooter></NavFooter>
 	<div class="content">
 		<ul class="nav-tab" @click="navTab">
-			<li>买入</li>
+			<li class="active">买入</li>
 			<li>卖出</li>
 			<li>撤单</li>
-			<li class="active">持有</li>
+			<li >持有</li>
 		</ul>
 		<div class="tab-content" v-bind:class="tabContentIndex==0 ? 'show' : '' ">
 			<FreeOnBoard></FreeOnBoard>
@@ -88,13 +88,13 @@
 			<HistoryBrowse></HistoryBrowse>
 		</div>
 		<div class="tab-content" v-bind:class="tabContentIndex==2 ? 'show' : '' ">
-			<ScrollTable :colsWidth="revokableOTColsWidth"></ScrollTable>
+			<ScrollTable :colsWidth="revokableOTColsWidth" :colsTitle="revokableOTColsName" :colsContent="revokableOTColsContent"></ScrollTable>
 			<!--<div class="cancelOrder-btn-wrapper">
                 <button disabled class="cancelOrder-btn" @click="toCancelCurrDayTradedOrder">撤单</button>
             </div>-->
 		</div>
 		<div class="tab-content" v-bind:class="tabContentIndex==3 ? 'show' : '' ">
-			<ScrollTable :colsWidth="holdTableColsWidth"></ScrollTable>
+			<ScrollTable :colsWidth="holdTableColsWidth" :colsTitle="holdTableColsName" :colsContent="holdTableColsContent"></ScrollTable>
 		</div>
 	</div>
 
@@ -109,13 +109,13 @@
 	import HistoryBrowse from '../components/HistoryBrowse.vue';
 	import FreeOnBoard from '../components/FreeOnBoard.vue';
 	export default {
-		data : ()=>({
+		data : () => ({
 			tabContentIndex : 0,
-			revokableOTColsWidth : [80, 50, 170, 110, 80, 90, 90, 90, 90, 90],//可撤单表列宽
-			revokableOTColsName : ['商品代码','商品名称','委托时间','买/卖','订/转','委托价格','委托数量','成交数量','委托编号','状态'],//可撤单表列名
+			revokableOTColsWidth : [80, 70, 170, 110, 80, 90, 90, 90, 90, 90],// 可撤单表列宽
+			revokableOTColsName : ['商品代码','商品名称','委托时间','买/卖','订/转','委托价格','委托数量','成交数量','委托编号','状态'],// 可撤单表列名
 			revokableOTColsContent : [{}],
-			holdTableColsWidth : [80, 50, 170, 110, 80, 90, 90, 90, 90, 90],//持仓表列宽
-			holdTableColsName : ['商品代码','买卖','商品名称','持有量','可用量','持有总成本'],//持仓表列名
+			holdTableColsWidth : [80, 50, 170, 110, 80, 90, 90, 90, 90, 90],// 持仓表列宽
+			holdTableColsName : ['商品代码','买卖','商品名称','持有量','可用量','持有总成本'],// 持仓表列名
 			holdTableColsContent : [{}],
 		}),
 		methods : {
@@ -129,8 +129,9 @@
                 target.classList.toggle('active');
                 var childNodes = parent.children;
                 for (var i = 0; i < 4; i++) {
-                    if (childNodes[i] === target)
-                        break;
+                    if(childNodes[i] === target){
+                    	break;
+                    }
                 }
                	this.tabContentIndex = i;
 			}
@@ -268,10 +269,6 @@
   border: none;
   box-shadow: 0 1px 4px 0 #5887ff;
 }
-
-
-
-
 .nav-tab {
   background-color: #fff;
   border-bottom: 1px solid #e9e9e9;
@@ -323,9 +320,4 @@
   z-index: 1;
   visibility: visible;
 }
-
-
-
-
-
 </style>

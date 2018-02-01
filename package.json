@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "webpack --config build/webpack.pro.conf.js"
+    "start": "npm run dev",
+    "build": "node bulid/build.js"
   },
   "author": "lidh",
   "license": "ISC",
@@ -33,10 +34,14 @@
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.5.3",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "ora": "^1.3.0",
     "portfinder": "^1.0.13",
     "postcss-loader": "^2.0.8",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "url-loader": "^0.6.2",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.3",

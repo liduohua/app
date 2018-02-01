@@ -1,4 +1,4 @@
-import loginGuard  from './guardRoute';
+import loginGuard from './guardRoute';
 
 import My from '../views/my/My.vue';
 import MySelect from '../views/my/MySelect.vue';
@@ -19,7 +19,6 @@ import WithdrawCash from '../views/my/WithdrawCash.vue';
 import FundWater from '../views/my/FundWater.vue';
 
 import QueryBill from '../views/my/QueryBill.vue';
-
 
 let my = [
 		{
@@ -132,7 +131,7 @@ let my = [
             path: 'setGuesturepassword',  
             component: SetGuesturePassword,   
             meta : {
-            	//viewName : 'SetGuesturePassword',
+            	// viewName : 'SetGuesturePassword',
             	title : '设置手势密码'
             },
             beforeEnter : loginGuard,
@@ -147,7 +146,4 @@ let my = [
             beforeEnter : loginGuard,
         },
 	];
-
-
-
 export default my;

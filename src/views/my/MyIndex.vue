@@ -9,7 +9,7 @@
 	export default {
 		name : 'my',
 		computed : {
-			cacheViews(){
+			cacheViews (){
 				return this.$store.state.cacheViews;
 			} 
 		}

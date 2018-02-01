@@ -1,0 +1,53 @@
+@import './mixins.scss';
+@import './funcBtns.scss';
+.content{
+	background:#fff;
+}
+.content::before{
+	content : '';
+	width : 1px;
+	float:left;
+	height:calc(100% + 1px);
+	margin-left:-1px;
+	display:block;
+}
+/*.content::after{
+	content : '';
+	width : 100%;
+	clear : both;
+	display:block;
+			
+}*/
+    
+/*广告图片*/
+.banner {
+    margin: 0.1rem;
+    position: relative;
+}
+
+.banner img {
+    width: 100%;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+
+.banner .view-more-detial {
+    height: 0.42rem;
+    width: 1.7rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.77);
+    border-top-left-radius: 0.15rem;
+    border-bottom-right-radius: 0.05rem;
+    text-align: center;
+    line-height: 0.42rem;
+    font-size: 0.18rem;
+    color: #fff;
+    vertical-align: bottom;
+    border-radius: 3px;
+}
+
+.banner .view-more-detial span {
+    vertical-align: -1px;
+} 

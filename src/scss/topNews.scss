@@ -1,0 +1,45 @@
+/*今日头条*/
+@import './mixins.scss';
+.top-news {
+    height: 0.5rem;
+    font-size: 0.2rem;
+    line-height: 0.5rem;
+    color: #6f7597;
+    background: #fff;
+   	padding-left: 0.35rem;
+    position: relative;
+    padding-right: 0.2rem;
+    @include hairline(bottom,#e0e4ef);
+    @include hairline(top,#e0e4ef);
+    transform: translateZ(0);
+}
+.top-news strong {
+    color: #ff0000;
+}
+.top-news span {
+    color: #ff0000;
+}
+
+.top-news .right-arrow-icon {
+    color: #4f7df5;
+    position: absolute;
+    //top: 50%;
+    //transform: translateY(-50%);
+    right: 0.2rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+}
+
+.top-news .swipe {
+    height: 0.5rem;
+    left: 1.6rem;
+    line-height: 0.5rem;
+    position: absolute;
+    right: 0.8rem;
+    top: 0;
+    overflow: hidden;
+}
+
+.top-news .swipe:active {
+    background: #eee;
+}

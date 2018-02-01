@@ -51,9 +51,6 @@
                     <p>涨跌幅：<span class="green">-232%</span >涨跌额：<span class="green">12323</span> <button>删除产品</button></p>
                 </div>
             </div>
-            
-            
-
         </div>
         <div class="add-select-panel">
             <h4>添加自选</h4>
@@ -80,7 +77,6 @@
 				alert(this.code);
 			}
 		},
-		
 	}
 </script>
 <style scoped lang="scss">
@@ -103,22 +99,22 @@
     	font-weight: 400;
 	}
 	.add-select-panel p {
-    	margin: .15rem 0;
-   	 	padding: 0;
-    	font-size: .18rem;
+		margin: .15rem 0;
+		padding: 0;
+		font-size: .18rem;
 	}
 	.add-select-panel button.btn {
-    	display: block;
-    	width: 2.8rem;
-    	height: .8rem;
-    	line-height: .8rem;
-    	color: #fff;
-    	font-size: .3rem;
-    	margin: 0 auto;
+		display: block;
+		width: 2.8rem;
+		height: .8rem;
+		line-height: .8rem;
+		color: #fff;
+		font-size: .3rem;
+		margin: 0 auto;
         background: -webkit-linear-gradient(124deg, #007936, #00be54);
-    	box-shadow: 0 1px 4px 0 #009944;
-    	border: none;
-    	border-radius: .4rem;
+		box-shadow: 0 1px 4px 0 #009944;
+		border: none;
+		border-radius: .4rem;
 	}
 
 .layout-panel .goods-list-wrapper {
@@ -218,7 +214,7 @@
 }
 
 .layout-panel .item-cell h5 span {
-    float: right;
-    color: #1d2088;
+	float:right;
+	color:#1d2088;
 }
 </style>

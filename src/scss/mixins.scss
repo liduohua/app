@@ -84,9 +84,10 @@ $gray : #999;
     }@else{
         &:after {
             @include base-css;
+            
             transform: scaleY(0.5);
             @if($position == 'bottom'){
-                bottom: 0;
+                bottom: 0px;
                 left: 0;
                 right: auto;
                 top: auto;

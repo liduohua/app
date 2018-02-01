@@ -16,7 +16,7 @@
                     </table>
                     <div>
                         <table>
-                            <tr v-for="(item,index) of tradeVolumeRank">
+                            <tr v-for="(item,index) of tradeVolumeRank" :key="index">
                                 <td  :class="rankClassSelect(index)">{{index+1}}</td>
                                 <td><label>琵琶腿150kg溜溜大小 <br/>&nbsp;<span>2342342</span></label></td>
                                 <td>9999<i class="up-arrow"></i></td>
@@ -35,7 +35,7 @@
                     </table>
                     <div>
                         <table>
-                            <tr v-for="(item,index) of tradeAmountRank">
+                            <tr v-for="(item,index) of tradeAmountRank" :key="index">
                                 <td  :class="rankClassSelect(index)">{{index+1}}</td>
                                 <td><label>琵琶腿150kg溜溜大小 <br/>&nbsp;<span>2342342</span></label></td>
                                 <td>9999<i class="up-arrow"></i></td>
@@ -54,7 +54,7 @@
                     </table>
                     <div>
                         <table>
-                            <tr v-for="(item,index) of changeRatioRank">
+                            <tr v-for="(item,index) of changeRatioRank" :key="index">
                                 <td  :class="rankClassSelect(index)">{{index+1}}</td>
                                 <td><label>琵琶腿150kg溜溜大小 <br/>&nbsp;<span>2342342</span></label></td>
                                 <td>9999<i class="up-arrow"></i></td>
@@ -76,7 +76,7 @@
 			NavHeader,
 			BrandAndClassify,
 		},
-		data : ()=>({
+		data : () => ({
 			tabContentIndex : 0,
 			tradeVolumeRank : [{rankNo : 1,name : '',code : '',trandAmount : '132'},
 				{rankNo : 1,name : '',code : '',trandAmount : '132'},
@@ -122,8 +122,9 @@
                 target.classList.toggle('active');
                 var childNodes = parent.children;
                 for (var i = 0; i < 3; i++) {
-                    if (childNodes[i] === target)
-                        break;
+                    if (childNodes[i] === target){
+                    	break;
+                    } 
                 }
                	this.tabContentIndex = i;
 			},

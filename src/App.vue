@@ -9,34 +9,35 @@
 </template>
 
 <script>
-	import {mapMutations} from 'vuex';
+	// import {mapMutations} from 'vuex';
 	export default {
-		data :()=>{
+		data :() => {
 			return {
 				
 			}
 		},
 		computed : {
-			cacheViews(){
+			cacheViews (){
 				return this.$store.state.cacheViews;
 			} 
 		},
 		methods : {
-			//...mapMutations(['increment']),
-			resizeFont(){
+			// ...mapMutations(['increment']),
+			resizeFont (){
 				var htmlEl = document.documentElement;
 				let deviceWidth = htmlEl.getBoundingClientRect().width;
-        		if(deviceWidth > 750) deviceWidth = 750;
-        		htmlEl.style.fontSize = deviceWidth / 7.5 + 'px';
+				if(deviceWidth > 750) deviceWidth = 750;
+				htmlEl.style.fontSize = deviceWidth / 7.5 + 'px';
 			}, 
 		},
-		mounted(){ 
+		mounted (){ 
 			this.resizeFont();
+			window.addEventListener('resize',() => this.resizeFont())
 		},
 		components : {
 			
 		},
-		created(){
+		created (){
 		
 		}
 	}

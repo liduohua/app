@@ -1,18 +1,19 @@
 <template>
 	<div class='swipe' ref='container'>
         <div class='swipe-wrap'>
-            <div class="swipe-wrap-item" v-for="item in loopImgList"><img :src="'../dist/assets/'+item.url" style="width:100%;vertical-align: middle;" /></div>
+            <div class="swipe-wrap-item" :key="index" v-for="(item,index) in loopImgList"><img :src="item.imgUrl" style="width:100%;vertical-align: middle;" /></div>
         </div>
         <div class="swipe-indicator" ref="indicator" data-bg-color="00bd16">
-            <span v-for="item in loopImgList"></span>
+            <span :key="index" v-for="(item,index) in loopImgList"></span>
         </div>
     </div>
 </template>
 <script>
+	import {httpPost} from '../api';
+	import config from '../config';
 	let Swiper = require('../lib/Swipe-es5.js').Swiper;
-	
 	export default {
-		data : function(){
+		data : function (){
 			return {
 				loopImgList : []
 			}
@@ -26,21 +27,14 @@
 			/*
 			 * 加载轮播图片
 			 */
-			async getLoopImgs(){
-				 this.$http.get('/loopImgs').then((response)=>{
-				 	
-				 }).catch((err)=>{
-				 	this.loopImgList = [
-				 		{url : 'test/loopImg/loop1.bmp'},
-				 		{url : 'test/loopImg/loop2.bmp'},
-				 		{url : 'test/loopImg/loop3.bmp'},
-				 		{url : 'test/loopImg/loop4.bmp'},
-				 		{url : 'test/loopImg/loop5.bmp'},
-				 		{url : 'test/loopImg/loop6.bmp'},
-				 		{url : 'test/loopImg/loop7.bmp'},
-				 	];
-				 	this.swiper.refresh();
-				 });
+			async getLoopImgs (){
+				let loopImgList = await httpPost('loopImgs');
+				loopImgList.map(function(imgItem){
+					imgItem.imgUrl = config.host + imgItem.imgUrl;
+				})
+				console.log(loopImgList);
+				this.loopImgList = loopImgList;
+				this.swiper.refresh();
 			},
 		},
 		beforeDestroy (){
@@ -87,5 +81,20 @@
     background: #fff;
     margin:5px;
 }
+ .swipe-indicator {
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            pointer-events: none;
+        }
 
+        .swipe-indicator span {
+            display: inline-block;
+            width: 0.2rem;
+            height: 0.1rem;
+            border-radius: 0.1rem;
+            background: #fff;
+        }
 </style>

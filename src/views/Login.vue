@@ -87,7 +87,7 @@
 			/*
 			 * 登录
 			 */
-			async toLogin(e){
+			async toLogin (e){
 				if(!this.validateArgs()){
 					return;
 				}
@@ -95,18 +95,20 @@
 					this.$http.post('phoneLogin' ,{
 						phoneNo : this.phoneNo,
 						phoneCheckCode : this.phoneCheckCode
-					}).then((response)=>{
+					}).then((response) => {
 					
-					}).catch((err)=>{
+					}).catch((err) => {
+						console.log(err);
 						this.$router.back();
 					});
 				}else{
 					this.$http.post('userNameLogin' ,{
 						userName : this.userName,
 						password : this.password
-					}).then((response)=>{
+					}).then((response) => {
 					
-					}).catch((err)=>{
+					}).catch((err) => {
+						console.log(err)
 						var userInfo = {
 							userName : '李大爷',
 							id : '123524342',
@@ -124,12 +126,12 @@
 			/*
 			 * 切换登录方式
 			 */
-			slideTab(e){
+			slideTab (e){
 				var target = e.target;
                 if (target.tagName.toLowerCase() !== 'li') return;
                 var ul = target.parentNode;
                 var preActive = ul.querySelector('.active');
-                if (target == preActive) return;
+                if (target === preActive) return;
                 	preActive.classList.toggle('active');
                 target.classList.toggle('active');
                 this.isShow = !this.isShow;
@@ -138,7 +140,7 @@
 			/*
 			 * 处理顶部导航栏渐变
 			 */
-			onScroll(e){
+			onScroll (e){
 				var currTarget = e.currentTarget;
 				var fontSize = parseInt(document.documentElement.style.fontSize)
 				var needMoveHeight = fontSize * 1.2;
@@ -147,14 +149,14 @@
 					changePercent = 1;
 				}
 				this.$refs.navHeader.$el.style.background = 'rgba(' + Math.round(11 * 1) + ', ' +
-					Math.round(68 * 1) + ', ' + Math.round(187 * 1) + ',' + ( 1 * changePercent) + ')'
+					Math.round(68 * 1) + ', ' + Math.round(187 * 1) + ',' + (1 * changePercent) + ')'
 			},
 		},
 		components : {
 			NavHeader,
 		},
 		created (){
-			//先保存，然后删掉，这样按返回键时就可以正常返回，而登录成功后，再重新给他赋值，这样就可以跳到登录之后的页面
+			// 先保存，然后删掉，这样按返回键时就可以正常返回，而登录成功后，再重新给他赋值，这样就可以跳到登录之后的页面
 			this.nextRoute = this.$store.state.nextRoute;
 		
 			this.$store.commit('delNextRoute');

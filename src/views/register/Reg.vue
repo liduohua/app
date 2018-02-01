@@ -18,7 +18,7 @@
 		components : {
 			NavHeader,
 			
-		},
+		}, 
 		
 	}
 </script>

@@ -67,7 +67,7 @@
 			this.$refs.content.scrollTop = this.scrollTop || 0;
 		},
 		deactivated(){
-			this.scrollTop = this.$refs.content.scrollTop ;
+			this.scrollTop = this.$refs.content.scrollTop;
 		},
 		methods : {
 			exitLogin(e){
@@ -86,7 +86,7 @@
 					changePercent = 1;
 				}
 				this.$refs.navHeader.$el.style.background = 'rgba(' + Math.round(11 * 1) + ', ' +
-					Math.round(68 * 1) + ', ' + Math.round(187 * 1) + ',' + ( 1 * changePercent) + ')'
+					Math.round(68 * 1) + ', ' + Math.round(187 * 1) + ',' + (1 * changePercent) + ')'
 			},
 		},
 		mounted(){
@@ -94,11 +94,11 @@
                 el : this.$refs.switch,
                 switchOn : false,
                 callback : function(status){
-                    //if(status === 'on'){
+                    // if(status === 'on'){
                     //    localStorage.setItem('isOpenGuesturePwd','true')
                    // }else{
                         localStorage.removeItem('isOpenGuesturePwd')
-                    //}
+                    // }
                 }
             });
 		},

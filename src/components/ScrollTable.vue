@@ -5,12 +5,12 @@
 				<div class="scroll-table-title">
 					<!-- 左上角（固定，不参与滚动） -->
 					<div class="scroll-table-title-left">
-						<table><tr><td>商品代码</td></tr></table>
+						<table><tr><td>{{colsTitle[0]}}</td></tr></table>
 					</div>
 					<!-- 上滚动栏（表格标题） -->
 					<div class="scroll-table-title-right">
 						<table>
-							<tr><td>买卖</td><td>商品名称</td><td>持有量</td><td>可用量</td><td>持有总成本</td></tr>
+							<tr><td :key="index" v-for="(name,index) in rightSideColsName">{{name}}</td></tr>
 						</table>
 					</div>
 				</div>
@@ -20,219 +20,23 @@
 					<!-- 左边固定部分 -->
 					<div class="scroll-table-content-left">
 						<table class="">
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
+							<tr :key="index" v-for="(item,index) of colsContent" class="">
 								<td>
-									424534
+									{{item.code}}
 								</td>
 							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>
-									424534
-								</td>
-							</tr>
-
 						</table>
 					</div>
 					<!-- 右边滚动部分 -->
 					<div class="scroll-table-content-right" style="width:225px;">
 						<table class="">
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>买入</td>
+							<tr :key="index" v-for="(item,index) of colsContent" >
+								<td>{{item.code}}</td>
 								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
 								<td>323232</td>
 								<td>212</td>
 								<td>545454.76</td>
-
 							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>买入</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-
-								<td>323232</td>
-								<td>23323</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>买入</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>4523</td>
-								<td>2344</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>买入</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>53343</td>
-								<td>788</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>卖出</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>7575</td>
-								<td>5656</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>买入</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>98978</td>
-								<td>565</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>卖出</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>4555</td>
-								<td>5656</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>买入</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>2112</td>
-								<td>7667</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>买入</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>7878</td>
-								<td>5656</td>
-								<td>545454.76</td>
-							</tr>
-
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>买入</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>7888</td>
-								<td>6767</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>卖出</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>676767</td>
-								<td>3223</td>
-								<td>545454.76</td>
-							</tr><tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-							<td>买入</td>
-							<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-							<td>876868</td>
-							<td>4545</td>
-							<td>545454.76</td>
-						</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>买入</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>34343</td>
-								<td>56464</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>卖出</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>32323</td>
-								<td>6767</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>买入</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>54545</td>
-								<td>7878</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>卖出</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>5646</td>
-								<td>1212</td>
-								<td>545454.76</td>
-							</tr>
-							<tr  data-no="{item.entrustNo}}" class="entrustNo-{item.entrustNo}}">
-								<td>卖出</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>32323</td>
-								<td>43434</td>
-								<td>545454.76</td>
-							</tr>
-
 						</table>
 					</div>
 				</div>
@@ -241,40 +45,37 @@
 <script>
 	var TableScroll = require('../lib/table-scroll').TableScroll;
 	export default {
-		/*props : {
+		props : {
 			colsWidth : {
 				require : true,
 				type : Array,
-				default : ()=> [],
+				default : () => [],
 			},
 			isColClick : {
 				require : false,
 				type : Boolean,
 				default : false,
 			},
-			titleCols : {
+			colsTitle : {
 				require : true,
 				type : Array,
-				default : ()=>[],
+				default : () => [],
 			},
-			contentCols : {
+			colsContent : {
 				require : true,
 				type : Array,
-				default : ()=>[],
+				default : () => [],
 			}
-		},*/
-		computed : {
-			/*leftSideColName : ()=>{
-				this.titleCols[0];
-			},
-			rightSideColsName : ()=>{
-				this.titleCols.slice(1);
-			},*/
 		},
-		mounted(){
-			new TableScroll(this.$refs.scrollTable,[80, 50, 170, 110, 80, 90, 90, 90, 90, 90])
-		}
-		destroyed(){
+		computed : {
+			rightSideColsName (){
+				return this.colsTitle.slice(1);
+			},
+		},
+		mounted (){
+			this.tableScroll = new TableScroll(this.$refs.scrollTable,this.colsWidth);
+		},
+		destroyed (){
 			
 		}
 	}
@@ -291,10 +92,10 @@
 		background:#fff;
 	}
 	.scroll-table-title{
-    	height:0.6rem;
+		height:0.6rem;
 	}
 	.scroll-table-title td{
-    	height:0.6rem;
+		height:0.6rem;
 	}
 	.scroll-table-title-left{
 		width:100px;

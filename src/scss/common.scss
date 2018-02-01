@@ -15,6 +15,7 @@ body {
     font-family: "微软雅黑", "Helvetica Neue", Helvetica, sans-serif !important;
     color: #2e2f33;
     background: $white;
+    font-size:0.20rem;
 }
 #app{
     @include position(( p : absolute,t:0,r:0,b:0,l:0));
@@ -223,7 +224,12 @@ li {
 
 .bar-nav a {
     position: absolute;
-    padding-top: 0.19rem;
+    padding: 0.19rem;
+    margin-left: -0.3rem;
+}
+.bar-nav a:active{
+    background: -webkit-linear-gradient(180deg, #0760ae, #0075ba);
+    background: linear-gradient(to left, #0760ae, #0075ba);
 }
 
 .bar-nav a.myspace {

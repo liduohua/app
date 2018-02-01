@@ -15,7 +15,7 @@
 	import SetGuesturePassword from '../../components/GuesturePassword.vue';
 	import NavHeader from '../../components/NavHeader.vue';
 	export default {
-		data : ()=>({
+		data : () => ({
 			clientName : '',
 			tips : '请绘制手势密码'
 		}),

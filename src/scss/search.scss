@@ -1,0 +1,58 @@
+@import './mixins.scss';
+    .search{
+        background:#fff;
+        font-size:0.3rem;
+    }
+    .search .code-list li{
+       //border-bottom: 1px solid #ccc;
+        height: 0.9rem;
+        line-height: 0.9rem;
+        padding: 0 10px;
+        position:relative;
+        color: #999;
+        @include hairline(bottom,#ccc);
+        transform: translateZ(0);
+    }
+    .search .code-list li:active{
+        background:#e9e9e9;
+    }
+    .search .add-icon{
+        color:#ff5757;
+        float:right;
+        font-style: normal;
+        font-size: 0.6rem;
+    }
+    .search .search-code{
+       @include hairline(bottom,#ccc);
+        background:url(../assets/search-black-icon.png) left no-repeat;
+        background-size: 0.6rem;
+        position: relative;
+        z-index: 1;
+    }
+    .search .search-code input{
+        border:none;
+        height: 0.9rem;
+        line-height: 0.9rem;
+        padding-left:2em;
+        background:transparent;
+        width: 100%;
+    }
+    .search button.clr-btn{
+        color: #ccc;
+        height: 0.9rem;
+        line-height: 0.9rem;
+        border: none;
+
+        display: block;
+        width: 100%;
+        background: #fff;
+        outline: none;
+    }
+    .search .search-list , .history-list{
+        position: absolute;
+        left:0;
+        right:0;
+        top:0.9rem;
+        bottom:0;
+        overflow-y:auto;
+    }

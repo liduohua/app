@@ -1,12 +1,12 @@
 <template>
 	<div class="page">
-        <NavHeader title="商品分类"></NavHeader>
+        <NavHeader title="商品分类" :isHiddenBack="true"></NavHeader>
         <NavFooter></NavFooter>
         <div class="content">
             <BrandAndClassify>
                 <div class="goods-list-wrapper">
                     <div class="goods-item">
-                        <a href="tradeDetail.html" class="item-cell goods-img">
+                        <a  class="item-cell goods-img">
 
                         </a>
                         <div class="item-cell item-cell-content">
@@ -114,8 +114,6 @@
 	}
 </script>
 <style scoped>
-     
-
         .list-layout-panel .two-level-classification {
             position: absolute;
             top: 0;

@@ -1,10 +1,10 @@
 <template>
 	 <div class="page">
-        <NavHeader title="交易行情" :isBack="false"></NavHeader>
+        <NavHeader title="交易行情" :isHiddenBack="true"></NavHeader>
         <NavFooter></NavFooter>
         <div class="content">
             <BrandAndClassify>
-                <div class="goods-list-wrapper">
+                <div ref="goods" class="goods-list-wrapper">
                     <table class="table-head">
                         <thead>
                             <tr>
@@ -19,7 +19,7 @@
                             </tr>
                         </thead>
                     </table>
-                    <div class="table-content">
+                    <div ref="tableContent" class="table-content" @click="toTradeDetail">
                         <table>
                             <tr>
                                 <td class="name">
@@ -155,7 +155,28 @@
 		methods :{
 			toTradeDetail(){
 				this.$router.push('stockDetail');
+			},
+			alignment(){
+				var height = this.$refs.goods.offsetHeight - this.$refs.goods.querySelector('.table-head').offsetHeight;
+				var tableContent = this.$refs.tableContent;
+				console.log(tableContent);
+                    tableContent.style.height = height + 'px';
+                    var width = 0;
+                    setTimeout(function() {
+                        var contentTds = [].slice.call(tableContent.querySelectorAll(' tr:first-child td'));
+                        var headThs = [].slice.call(tableContent.querySelectorAll('.table-head tr:first-child th'));
+                        console.log(contentTds);
+                        console.log(headThs);
+                        contentTds.forEach(function(td, idx) {
+                            headThs[idx].style.minWidth = td.offsetWidth + 'px';
+                            width += td.offsetWidth;
+                        });
+                        tableContent.style.width = width + 'px';
+                    }, 0);
 			}
+		},
+		mounted(){
+			this.alignment();
 		}
 	}
 </script>

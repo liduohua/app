@@ -43,11 +43,11 @@
 	background-size:100%;
 }
 .bar-footer a i.goodsClassification{
-	background:url('../assets/icon/all-icon.png');
+	background:url('../assets/icon/goods-cly-icon.png');
 	background-size:100%;
 }
 .bar-footer a.router-link-active i.goodsClassification{
-	background:url('../assets/icon/all-active-icon.png');
+	background:url('../assets/icon/goods-cly-active-icon.png');
 	background-size:100%;
 }
 .bar-footer a i.tradeMarket{
