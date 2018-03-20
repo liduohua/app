@@ -11,7 +11,7 @@ import QueryGoodsInfo from '../views/my/QueryGoodsInfo.vue';
 
 import DayEntrust from '../views/my/DayEntrust.vue';
 import DayTraded from '../views/my/DayTraded.vue';
-import HistoryEntrust from '../views/my/HistoryEntrust.vue';
+import HistoryTraded from '../views/my/HistoryTraded.vue';
 
 import PayManage from '../views/my/PayManage.vue';
 import Recharge from '../views/my/Recharge.vue';
@@ -104,8 +104,8 @@ let my = [
             }
         },
         {
-            path: 'historyEntrust',  
-            component: HistoryEntrust,   
+            path: 'historyTraded',  
+            component: HistoryTraded,   
             meta : {
             	viewName : '',
             	title : '历史委托'

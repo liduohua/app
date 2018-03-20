@@ -1,15 +1,16 @@
 <template>
 	<div id="app">
-		<transition>
-			<keep-alive :include="cacheViews">
-				<router-view></router-view>
-			</keep-alive>
-		</transition>
+		<keep-alive :include="cacheViews">
+			<router-view></router-view>
+		</keep-alive>
+		<Toast></Toast>
 	</div>
 </template>
 
 <script>
 	// import {mapMutations} from 'vuex';
+	import io from 'socket.io-client';
+	import Toast from './components/Toast.vue';
 	export default {
 		data :() => {
 			return {
@@ -35,10 +36,13 @@
 			window.addEventListener('resize',() => this.resizeFont())
 		},
 		components : {
-			
+			Toast
 		},
 		created (){
-		
+			let socket = io('http://localhost:7002');
+			socket.on('marketlist',(data) => {
+				console.log(data);
+			})
 		}
 	}
 </script>

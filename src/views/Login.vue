@@ -52,20 +52,24 @@
 </template>
 <script>
 	import NavHeader from '../components/NavHeader.vue';
+	import {httpPost} from '../api';
 	const Modal = require('../lib/Modal-es5').Modal;
+	import {mapMutations} from 'vuex';
 	export default {
 		data : () => ({
-			isShow : true,//
+			isShow : true,
 			phoneNo : '',
 			phoneCheckCode : '',
 			userName : '',
 			password : '',
 		}),
 		methods :{
+			...mapMutations(['showToast']),
 			validateArgs (){
 				if(this.isShow){
 					if(this.phoneNo === ''){
-						new Modal().alert('手机号不能为空！');
+						this.showToast('手机号不能为空！');
+						//new Modal().alert('手机号不能为空！');
 						return false;
 					}
 					if(this.phoneCheckCode === ''){
@@ -91,37 +95,28 @@
 				if(!this.validateArgs()){
 					return;
 				}
+				let userInfo;
+				var preloader = new Modal();
+				var modal = preloader.showPreloader();
 				if(this.isShow){
-					this.$http.post('phoneLogin' ,{
+					userInfo = await httpPost('300002' ,{
 						phoneNo : this.phoneNo,
 						phoneCheckCode : this.phoneCheckCode
-					}).then((response) => {
-					
-					}).catch((err) => {
-						console.log(err);
-						this.$router.back();
 					});
 				}else{
-					this.$http.post('userNameLogin' ,{
+					userInfo = await httpPost('300001' ,{
 						userName : this.userName,
 						password : this.password
-					}).then((response) => {
-					
-					}).catch((err) => {
-						console.log(err)
-						var userInfo = {
-							userName : '李大爷',
-							id : '123524342',
-							datetime : new Date(),
-							vip : 1,
-							clientName : '万小芳'
-							
-						}
-						this.$store.commit('userLogin',userInfo);
-						this.$store.commit('saveNextRoute',this.nextRoute);
-						this.$router.back();
 					});
-				}	
+				}
+				preloader.hidePreloader(modal);
+				if(userInfo.error_no !== 0){
+					new Modal().alert(userInfo.error_info);
+				}else{
+					this.$store.commit('userLogin',userInfo);
+					this.$store.commit('saveNextRoute',this.nextRoute);
+					this.$router.back();
+				}
 			},
 			/*
 			 * 切换登录方式

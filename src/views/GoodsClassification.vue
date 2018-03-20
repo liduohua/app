@@ -3,14 +3,12 @@
         <NavHeader title="商品分类" :isHiddenBack="true"></NavHeader>
         <NavFooter></NavFooter>
         <div class="content">
-            <BrandAndClassify>
+            <BrandAndClassify @conditionChange="onConditionChange">
                 <div class="goods-list-wrapper">
-                    <div class="goods-item">
-                        <a  class="item-cell goods-img">
-
-                        </a>
+                    <div class="goods-item" v-for="(item,index) in marketList" :key="index">
+                        <a class="item-cell goods-img"></a>
                         <div class="item-cell item-cell-content">
-                            <h5><a href="tradeDetail.html">大鸡腿快到碗里来</a></h5>
+                            <h5><a>{{item.name}}</a></h5>
                             <table>
                                 <tr>
                                     <td>卖价一：23</td>
@@ -28,73 +26,6 @@
                                 </tr>
                             </table>
                         </div>
-
-                    </div>
-                    <div class="goods-item">
-                        <div class="item-cell goods-img" style="background-image:url(../assets/goods-img2.png)"></div>
-                        <div class="item-cell item-cell-content">
-                            <h5>大鸡腿快到碗里来</h5>
-                            <table>
-                                <tr>
-                                    <td>卖价一：23</td>
-                                    <td>卖价二：233</td>
-                                </tr>
-                                <tr>
-                                    <td>卖量一：233</td>
-                                    <td>卖量二：23</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">涨跌幅：<strong class="red">+23.33%</strong> 涨跌幅：<strong class="red">+32.323</strong></td>
-                                </tr>
-                                <tr>
-                                    <td class="dark-blue" colspan="2">可售量：<strong>232332</strong><button>快速竞价</button></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="goods-item">
-                        <div class="item-cell goods-img" style="background-image:url(../assets/goods-img3.png)"></div>
-                        <div class="item-cell item-cell-content">
-                            <h5>大鸡腿快到碗里来</h5>
-                            <table>
-                                <tr>
-                                    <td>卖价一：23</td>
-                                    <td>卖价二：233</td>
-                                </tr>
-                                <tr>
-                                    <td>卖量一：233</td>
-                                    <td>卖量二：23</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">涨跌幅：<strong class="red">+23.33%</strong> 涨跌幅：<strong class="red">+32.323</strong></td>
-                                </tr>
-                                <tr>
-                                    <td class="dark-blue" colspan="2">可售量：<strong>232332</strong><button>快速竞价</button></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="goods-item">
-                        <div class="item-cell goods-img" style="background-image:url(../assets/goods-img4.png)"></div>
-                        <div class="item-cell item-cell-content">
-                            <h5>大鸡腿快到碗里来</h5>
-                            <table>
-                                <tr>
-                                    <td>卖价一：23</td>
-                                    <td>卖价二：233</td>
-                                </tr>
-                                <tr>
-                                    <td>卖量一：233</td>
-                                    <td>卖量二：23</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">涨跌幅：<strong class="red">+23.33%</strong> 涨跌幅：<strong class="red">+32.323</strong></td>
-                                </tr>
-                                <tr>
-                                    <td class="dark-blue" colspan="2">可售量：<strong>232332</strong><button>快速竞价</button></td>
-                                </tr>
-                            </table>
-                        </div>
                     </div>
                 </div>
             </BrandAndClassify>
@@ -105,15 +36,35 @@
 	import NavFooter from '../components/NavFooter.vue';
 	import NavHeader from '../components/NavHeader.vue';
 	import BrandAndClassify from '../components/BrandAndClassify.vue';
+	import {httpGet} from '../api';
 	export default {
+		data : ()=>({
+			marketList : []
+		}),
 		components : {
 			NavFooter,
 			NavHeader,
 			BrandAndClassify,
+			
+		},
+		methods : {
+			onConditionChange (newCondition){
+				this.getCodeListBySiftCondition(newCondition);
+			},
+			async getCodeListBySiftCondition (condition){
+				var codeList = await httpGet('400002',condition);
+				this.marketList = codeList;
+			}
+		},
+		created () {
+			this.getCodeListBySiftCondition({
+				
+			});
 		}
 	}
 </script>
-<style scoped>
+<style scoped lang="scss">
+@import '../scss/mixins.scss';
         .list-layout-panel .two-level-classification {
             position: absolute;
             top: 0;
@@ -146,6 +97,8 @@
             background-color: #fff;
             width: 5.7rem;
             overflow: auto;
+            will-change : transform;
+            transform: translateZ(0);
         }
 
         .list-layout-panel .goods-item {
@@ -153,8 +106,11 @@
             box-sizing: border-box;
             width: 100%;
             padding: 0.2rem;
-            border-bottom: 1px solid #e7e7f1;
+            //border-bottom: 1px solid #e7e7f1;
             font-size: 0.18rem;
+            @include hairline(bottom , #e7e7f1);  
+            position:relative;
+            will-change : transform;
         }
 
         .list-layout-panel .item-cell {

@@ -29,6 +29,7 @@ module.exports = {
 			
 		},
 		//开发服务设置
+		host : '192.168.246.248',
 		host : 'localhost',
 		autoOpenBrowser : false,
 		port : 8080,
@@ -37,12 +38,13 @@ module.exports = {
 		watchContentBase : false,
 		
 		devtool : 'eval-source-map',
-		
-		
+		showEslintErrorsInOverlay : false,
+		useEslint : true,
 		
 		//根据 CSS-loader README (https://github.com/webpack/css-loader#sourcemaps),
 		//对于这个选项,相对路径存在bug，所以CSS的源码映射默认是关闭的，
 		//但以实际使用的经验来说，通常不会有啥问题，只要知道开启这个选项存在这个问题就行了
-		cssSourceMap : false
+		cssSourceMap : true
 	}
 }
+ 

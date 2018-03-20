@@ -1,5 +1,5 @@
 <template>
-	<div class="page">
+	<div class="page" >
 		<NavHeader ref="navHeader" background="rgba(0,0,0, 0.2)">
 			<a><img src="../assets/icon/user-icon.png" alt="" class="nav-ico"></a>
         	<a class="message"><img src="../assets/head-ico2.png" alt="" class="nav-ico"></a>

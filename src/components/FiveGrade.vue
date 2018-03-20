@@ -1,65 +1,51 @@
 <template>
-	<div class="five-grade-panel">
+	<div class="five-grade-panel" @click="changePrices">
 		<table class="five-grade">
 			<tbody>
-				<tr onclick="priceset(198.24,669)">
-					<td class="tl">卖5</td>
-					<td class="tc red">198.24</td>
-					<td class="tr blue">669</td>
-				</tr>
-				<tr onclick="priceset(198.24,669)">
-					<td class="tl">卖4</td>
-					<td class="tc red">198.24</td>
-					<td class="tr blue">669</td>
-				</tr>
-				<tr onclick="priceset(198.54,9)">
-					<td class="tl">卖3</td>
-					<td class="tc red">198.54</td>
-					<td class="tr blue">9</td>
-				</tr>
-				<tr onclick="priceset(197.24,679)">
-					<td class="tl">卖2</td>
-					<td class="tc red">197.24</td>
-					<td class="tr blue">679</td>
-				</tr>
-				<tr onclick="priceset(173.62,1407)">
-					<td class="tl">卖1</td>
-					<td class="tc red">173.62</td>
-					<td class="tr blue">1407</td>
+				<tr v-for="({prices, num},index) of sellFiveGradeReverse" :key="index">
+					<td class="tl">卖{{5-index}}</td>
+					<td class="tc red" :data-prices="prices">{{prices}}</td>
+					<td class="tr green">{{num}}</td>
 				</tr>
 				<tr>
 					<td colspan="3" class="cutting-line"></td>
 				</tr>
-				<tr onclick="priceset(198.24,669)">
-					<td class="tl">买5</td>
-					<td class="tc red">198.24</td>
-					<td class="tr blue">669</td>
-				</tr>
-				<tr onclick="priceset(198.24,669)">
-					<td class="tl">买4</td>
-					<td class="tc red">198.24</td>
-					<td class="tr blue">669</td>
-				</tr>
-				<tr onclick="priceset(198.24,669)">
-					<td class="tl">买3</td>
-					<td class="tc red">198.24</td>
-					<td class="tr blue">669</td>
-				</tr>
-				<tr onclick="priceset(198.24,669)">
-					<td class="tl">买2</td>
-					<td class="tc red">198.24</td>
-					<td class="tr blue">669</td>
-				</tr>
-				<tr onclick="priceset(173.62,1407)">
-					<td class="tl">买1</td>
-					<td class="tc red">173.62</td>
-					<td class="tr blue">1407</td>
+				<tr v-for="({prices, num},index) of buyFiveGrade" :key="index">
+					<td class="tl">买{{index+1}}</td>
+					<td class="tc red" :data-prices="prices">{{prices}}</td>
+					<td class="tr blue">{{num}}</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 </template>
-
+<script>
+	export default {
+		computed : {
+			sellFiveGradeReverse(){
+				return this.sellFiveGrade.reverse();
+			}
+		},
+		props : {
+			buyFiveGrade : {
+				type : Array,
+				required : true
+			},
+			sellFiveGrade : {
+				type : Array,
+				required : true
+			},
+		},
+		methods : {
+			changePrices (e){
+				var prices = e.target.getAttribute('data-prices');
+				if(prices !== null){
+					this.$emit('changePrices',prices)
+				}
+			}
+		}
+	}
+</script>
 <style lang='scss'>
 	@import '../scss/mixins.scss';
 	.five-grade-panel {

@@ -6,7 +6,7 @@
             	<ul>
         			<router-link tag="li" to='dayTraded'>当日成交<i class="list-block-arrow-right"></i></router-link>
         			<router-link tag="li" to="dayEntrust">当日委托<i class="list-block-arrow-right"></i></router-link>
-        			<router-link tag="li" to="historyEntrust">历史成交<i class="list-block-arrow-right"></i></router-link>
+        			<router-link tag="li" to="historyTraded">历史成交<i class="list-block-arrow-right"></i></router-link>
         		</ul>
             </div>
         </div>

@@ -1,49 +1,45 @@
 <template>
 	<div class="scroll-table" ref="scrollTable">
-				<!--表格标题-->
-				<!--表格标题-->
-				<div class="scroll-table-title">
-					<!-- 左上角（固定，不参与滚动） -->
-					<div class="scroll-table-title-left">
-						<table><tr><td>{{colsTitle[0]}}</td></tr></table>
-					</div>
-					<!-- 上滚动栏（表格标题） -->
-					<div class="scroll-table-title-right">
-						<table>
-							<tr><td :key="index" v-for="(name,index) in rightSideColsName">{{name}}</td></tr>
-						</table>
-					</div>
-				</div>
-				<!-- 表格内容 -->
-				<div class="scroll-table-content">
-					<!--<div class="mui-hidden hold-tips hold-sell-tips">您还没有持仓哦。</div>-->
-					<!-- 左边固定部分 -->
-					<div class="scroll-table-content-left">
-						<table class="">
-							<tr :key="index" v-for="(item,index) of colsContent" class="">
-								<td>
-									{{item.code}}
-								</td>
-							</tr>
-						</table>
-					</div>
-					<!-- 右边滚动部分 -->
-					<div class="scroll-table-content-right" style="width:225px;">
-						<table class="">
-							<tr :key="index" v-for="(item,index) of colsContent" >
-								<td>{{item.code}}</td>
-								<td>大鸡腿不13212大涨了哈哈哈哈或发多少是多少</td>
-								<td>323232</td>
-								<td>212</td>
-								<td>545454.76</td>
-							</tr>
-						</table>
-					</div>
-				</div>
+		<!--表格标题-->
+		<div class="scroll-table-title">
+			<!-- 左上角（固定，不参与滚动） -->
+			<div class="scroll-table-title-left">
+				<table><tr><td>{{colsTitle[0]}}</td></tr></table>
 			</div>
+			<!-- 上滚动栏（表格标题） -->
+			<div class="scroll-table-title-right">
+				<table>
+					<tr><td :key="index" v-for="(name,index) in rightSideColsName">{{name}}</td></tr>
+				</table>
+			</div>
+		</div>
+		<!-- 表格内容 -->
+		<div class="scroll-table-content" :data-auto-load="isScrolling" ref="infinteContainer" @infinite="triggerInfinite">
+			<!--<div class="mui-hidden hold-tips hold-sell-tips">您还没有持仓哦。</div>-->
+			<!-- 左边固定部分 -->
+			<div class="scroll-table-content-left">
+				<table class="">
+					<tr :key="index" v-for="(rightLine,index) of colsContent[0]" class="">
+						<td>
+							{{rightLine}}
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!-- 右边滚动部分 -->
+			<div class="scroll-table-content-right" style="width:225px;">
+				<table class="">
+					<tr :key="index" v-for="(leftLine,index) of colsContent[1]" >
+						<td v-for="(item,index) of leftLine">{{item}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </template>
 <script>
 	var TableScroll = require('../lib/table-scroll').TableScroll;
+	import InfiniteScroll from '../lib/InfiniteScroll';
 	export default {
 		props : {
 			colsWidth : {
@@ -65,6 +61,28 @@
 				require : true,
 				type : Array,
 				default : () => [],
+			},
+			isScrolling : {
+				require : false,
+				type :Boolean,
+				default : false
+			},
+			noMoreData : {
+				require : false,
+				type : Boolean,
+				default : false
+			}
+		},
+		watch : {
+			colsTitle (val){
+				setTimeout(() => {
+					this.tableScroll.alignHeight();
+				})
+			},
+			colsContent (val){
+				setTimeout(() => {
+					this.tableScroll.alignHeight();
+				})
 			}
 		},
 		computed : {
@@ -74,6 +92,14 @@
 		},
 		mounted (){
 			this.tableScroll = new TableScroll(this.$refs.scrollTable,this.colsWidth);
+			if(this.isScrolling){
+				this.infinte = new InfiniteScroll(this.$refs.infinteContainer);
+			}
+		},
+		methods : {
+			triggerInfinite (){
+				this.$emit('infinite', this.infinte);
+			}
 		},
 		destroyed (){
 			
@@ -136,6 +162,10 @@
 		z-index:0;
 		position: relative;
 		overflow-x:hidden;
+	}
+	.scroll-table-content-right::after{
+		content : ' ';
+		clear:both;
 	}
 	.scroll-table table{
 		border-collapse: collapse;

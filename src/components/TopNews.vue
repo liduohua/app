@@ -1,7 +1,7 @@
 <template>
 	<div class="top-news">
         <strong>今日头条：</strong>
-            <div ref="container" class='swipe'>
+            <div ref="container" class='swipe' style="will-change:transform">
                 <div class='swipe-wrap' @click="toNewsDetails">
                     <div class="swipe-wrap-item" :data-id="item.id" :key="index" v-for="(item,index) in topNewsList">{{item.title}}</div>
                 </div>

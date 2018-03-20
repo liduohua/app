@@ -3,7 +3,7 @@
     <NavHeader title="新闻列表"></NavHeader>
     <div class="content" data-auto-load="true" ref="infinteContainer" @infinite="loadNewsList">
     	<div class="news-list" @click="toNewsDetail" >
-    		<div class="news-item" v-for="{id,title,releaseTime} in newsList" :data-id="id" :key="id">
+    		<div class="news-item" v-for="{id,title,releaseTime} in newsList" :data-id="id" :key="id" style="transform: translateZ(0);">
             	<p class="news-title">{{title}}</p>
             	<p class="release-time">{{releaseTime}}</p>
         	</div>

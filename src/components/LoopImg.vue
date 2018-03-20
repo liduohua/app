@@ -1,6 +1,6 @@
 <template>
-	<div class='swipe' ref='container'>
-        <div class='swipe-wrap'>
+	<div class='swipe' ref='container' style="transform: translateZ(0);">
+        <div class='swipe-wrap' style="transform: translateZ(0);">
             <div class="swipe-wrap-item" :key="index" v-for="(item,index) in loopImgList"><img :src="item.imgUrl" style="width:100%;vertical-align: middle;" /></div>
         </div>
         <div class="swipe-indicator" ref="indicator" data-bg-color="00bd16">

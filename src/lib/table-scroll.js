@@ -14,7 +14,7 @@
 	}
 })(this, function() {
 	'use strict';
-		var IScroll = require('./iscroll-probe');
+		var IScroll = require('./iscroll-probe').IScroll;
 		function addEvent(el,type,fn,capture){
 			el.addEventListener(type,fn,!!capture);
 		}

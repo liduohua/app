@@ -6,6 +6,7 @@ var baseWebpackConfig = require('./webpack.base.conf');
 var utils = require('./utils');
 var path = require('path');
 const merge = require('webpack-merge');
+const config = require('../config');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');

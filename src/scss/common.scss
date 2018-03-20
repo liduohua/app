@@ -94,6 +94,9 @@ li {
     color: #ff0000 !important;
 }
 
+.green {
+    color : green !important;
+}
 .fb {
     font-weight: 700;
 }
@@ -440,11 +443,11 @@ li {
 .infinite-pocket{
     text-align: center;
     color:#666;
-
+    clear:both;
 
     text-align: center;
     font-size: 0.25rem;
-    margin: 8px;
+    padding: 8px;
 }
 
 
@@ -682,6 +685,8 @@ li {
     line-height: 45px;
     @include hairline(bottom , #ccc);  
     padding-left:15px; 
+    will-change : transform;
+    -webkit-will-change : transform
 }
 .list-block ul li:active{
     background:#eee;

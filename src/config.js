@@ -1,3 +1,3 @@
 export default {
-	host : 'http://127.0.0.1:7002/'
+	host : 'http://192.168.246.248:7002/'
 }

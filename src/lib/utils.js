@@ -17,7 +17,7 @@ export function countDown(target) {
 	target.textContent = seconds + 's后重新发送';
 	//target.textContent += 's后重新发送';
 	target.setAttribute('data-timeout-id', setTimeout(countDownCb, 1000));
-},
+}
 /*
  * name 查询参数名(如果url中有多个相同名字的请求参数,返回第一个的值,
  * 请求参数中如果有特殊字符请使用 encodeURIComponent()对请求参数进行编码)
@@ -33,7 +33,7 @@ export function getQueryParameter(name) {
 		val = name && ~(idx = items[i].indexOf(name)) ? items[i].substring(idx + name.length + 1) : '';
 	return val;
 
-},
+}
 /*
  * money 金额
  * scale 保留的小数位数
@@ -58,8 +58,8 @@ export function formatMoney(money, scale, isCentsUnit) {
 		//throw new Error('格式化金额异常,请输入正确的参数!');
 		return '';
 	}
-},
-//格式化日期
+}
+// 格式化日期
 export function formatDate(pattern, time) {
 	var d = time;
 	var o = {
@@ -77,7 +77,7 @@ export function formatDate(pattern, time) {
 		if(new RegExp("(" + k + ")").test(pattern))
 			pattern = pattern.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
 	return pattern;
-},
+}
 //除法
 export function div(num1, num2, decimal) {
 	var num1Str = num1 + '',
@@ -99,7 +99,7 @@ export function div(num1, num2, decimal) {
 	var result = num1Str / num2Str;
 	//result = result.toFixed(decimal || 15);
 	return result;
-},
+}
 //乘法
 export function mul(num1, num2) {
 	var num1Str = num1 + '',
@@ -110,7 +110,7 @@ export function mul(num1, num2) {
 	num1Str = num1Str.replace(".", "");
 	num2Str = num2Str.replace(".", "");
 	return(num1Str * num2Str) / Math.pow(10, totalLen);
-},
+}
 //加法
 export function add(num1, num2) {
 	var num1Str = num1 + '',
@@ -130,7 +130,7 @@ export function add(num1, num2) {
 	num1Str = num1Str.replace(".", "");
 	num2Str = num2Str.replace(".", "");
 	return(Number(num1Str) + Number(num2Str)) / Math.pow(10, maxLen);
-},
+}
 //减法
 export function sub(num1, num2) {
 	var num1Str = num1 + '',
@@ -150,7 +150,7 @@ export function sub(num1, num2) {
 	num1Str = num1Str.replace(".", "");
 	num2Str = num2Str.replace(".", "");
 	return(Number(num1Str) - Number(num2Str)) / Math.pow(10, maxLen);
-},
+}
 //js脚本转义(事件暂时没处理)
 export function jsEscape(val) {
 	var escape = function(val) {
@@ -166,7 +166,7 @@ export function jsEscape(val) {
 		return val;
 	}
 	return escape(val);
-},
+}
 //html转义
 export function htmlEscape(val) {
 	//html实体列表
@@ -192,7 +192,7 @@ export function htmlEscape(val) {
 			return val;
 		};
 	return escape(val);
-},
+}
 
 //金额校验,不能大于两位小数(-1-参数为空、0-校验失败、1校验通过)
 export function checkMoney(money) {
@@ -201,7 +201,7 @@ export function checkMoney(money) {
 	}
 	var moneyCheckRegExp = /(^[1-9]\d*(.\d{1,2})?$)|(^0(|.\d{1,2})$)/;
 	return moneyCheckRegExp.test(money);
-},
+}
 //手机号码校验 （返回-2-不是手机号、-1-参数为空、0-失败、1-电信、2-联通、3-移动）
 export function checkPhoneNo(phoneNo) {
 	if(/^1\d{10}$/.test(phoneNo)) {
@@ -227,7 +227,7 @@ export function checkPhoneNo(phoneNo) {
 		return 3;
 	}
 	return 0; */
-},
+}
 //身份证校验
 export function checkIdNo(idNo) {
 	var provinces = {
@@ -316,7 +316,7 @@ export function checkIdNo(idNo) {
 	} else {
 		return false;
 	}
-},
+}
 export function checkEmail(email) {
 	var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 	if(reg.test(email)) {

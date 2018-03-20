@@ -7,12 +7,12 @@
 			<li class="active">买入</li>
 			<li>卖出</li>
 			<li>撤单</li>
-			<li >持有</li>
+			<li>持有</li>
 		</ul>
 		<div class="tab-content" v-bind:class="tabContentIndex==0 ? 'show' : '' ">
 			<FreeOnBoard></FreeOnBoard>
-			<div class="stock-panel  mt10">
-				<FiveGrade></FiveGrade>
+			<div class="stock-panel   mt10">
+				<FiveGrade :sellFiveGrade="sellFiveGrade" :buyFiveGrade="buyFiveGrade" ></FiveGrade>
 				<div class="input-panel">
 					<div class="input-text">
 						<input type="text" placeholder="" value="AA0018">
@@ -51,7 +51,7 @@
 		<div class="tab-content" v-bind:class="tabContentIndex==1 ? 'show' : '' ">
 			<FreeOnBoard></FreeOnBoard>
 			<div class="stock-panel mt10">
-				<FiveGrade></FiveGrade>
+				<FiveGrade :sellFiveGrade="[]" :buyFiveGrade="[]" ></FiveGrade>
 				<div class="input-panel">
 					<div class="input-text">
 						<input type="text" placeholder="" value="AA0018">
@@ -88,10 +88,11 @@
 			<HistoryBrowse></HistoryBrowse>
 		</div>
 		<div class="tab-content" v-bind:class="tabContentIndex==2 ? 'show' : '' ">
-			<ScrollTable :colsWidth="revokableOTColsWidth" :colsTitle="revokableOTColsName" :colsContent="revokableOTColsContent"></ScrollTable>
-			<!--<div class="cancelOrder-btn-wrapper">
+			<div class="cancelOrder-btn-wrapper">
                 <button disabled class="cancelOrder-btn" @click="toCancelCurrDayTradedOrder">撤单</button>
-            </div>-->
+            </div>
+			<ScrollTable :colsWidth="revokableOTColsWidth" :colsTitle="revokableOTColsName" :colsContent="revokableOTColsContent"></ScrollTable>
+			
 		</div>
 		<div class="tab-content" v-bind:class="tabContentIndex==3 ? 'show' : '' ">
 			<ScrollTable :colsWidth="holdTableColsWidth" :colsTitle="holdTableColsName" :colsContent="holdTableColsContent"></ScrollTable>
@@ -108,15 +109,62 @@
 	import FiveGrade from '../components/FiveGrade.vue';
 	import HistoryBrowse from '../components/HistoryBrowse.vue';
 	import FreeOnBoard from '../components/FreeOnBoard.vue';
+	import {httpGet} from '../api';
 	export default {
 		data : () => ({
 			tabContentIndex : 0,
-			revokableOTColsWidth : [80, 70, 170, 110, 80, 90, 90, 90, 90, 90],// 可撤单表列宽
+			revokableOTColsWidth : [80, 120, 150, 70, 70, 70, 70, 70, 70, 70],// 可撤单表列宽
 			revokableOTColsName : ['商品代码','商品名称','委托时间','买/卖','订/转','委托价格','委托数量','成交数量','委托编号','状态'],// 可撤单表列名
-			revokableOTColsContent : [{}],
-			holdTableColsWidth : [80, 50, 170, 110, 80, 90, 90, 90, 90, 90],// 持仓表列宽
+			revokableOTColsContent : [],
+			holdTableColsWidth : [80, 70, 120, 70, 70, 80],// 持仓表列宽
 			holdTableColsName : ['商品代码','买卖','商品名称','持有量','可用量','持有总成本'],// 持仓表列名
-			holdTableColsContent : [{}],
+			holdTableColsContent : [],
+			sellFiveGrade : [{
+					prices : '--',
+					num : '--',
+				},
+				{
+					prices : '--',
+					num : '--',
+				},
+				{
+					prices : '--',
+					num : '--',
+				},
+				{
+					prices : '--',
+					num : '--',
+				},
+				{
+					prices : '--',
+					num : '1', 
+			}],
+			buyFiveGrade : [{
+					prices : '--',
+					num : '--',
+				},
+				{
+					prices : '--',
+					num : '--',
+				},
+				{
+					prices : '--',
+					num : '--',
+				},
+				{
+					prices : '--',
+					num : '--',
+				},
+				{
+					prices : '--',
+					num : '--',
+				},
+				{
+					prices : '--',
+					num : '--',
+			}]
+			
+			
 		}),
 		methods : {
 			navTab(e){
@@ -134,7 +182,41 @@
                     }
                 }
                	this.tabContentIndex = i;
+			},
+			onChangePrices (prices){
+				alert(prices);
+			},
+			toCancelCurrDayTradedOrder(){
+				
+			},
+			async getHoldingOrders (){
+				let holdingOrders = await httpGet('300005');
+				let leftContent = [];
+				let rightContent = [];
+				for({code} of holdingOrders){
+					leftContent.push(code);
+				}
+				for({entrustDirection, name, holdAmount, tradedAmount, usableAmount, holdCosting} of holdingOrders){
+					rightContent.push([entrustDirection, name, holdAmount, usableAmount, holdCosting]);
+				}
+				this.holdTableColsContent = [leftContent,rightContent];
+			},
+			async getCancelableOrdersList (){
+				let trandingOrders = await httpGet('300004');
+				let leftContent = [];
+				let rightContent = [];
+				for({code} of trandingOrders){
+					leftContent.push(code);
+				}
+				for({name, entrustTime, entrustDirection, dt, entrustPrices, entrustAmount, tradedAmount, entrustNo, status} of trandingOrders){
+					rightContent.push([name,entrustTime,entrustDirection,dt,entrustPrices,entrustAmount,tradedAmount,entrustNo,status]);
+				}
+				this.revokableOTColsContent = [leftContent,rightContent];
 			}
+		},
+		mounted (){
+			this.getHoldingOrders();
+			this.getCancelableOrdersList();
 		},
 		components : {
 			NavFooter,
@@ -319,5 +401,25 @@
 .tab-content.show {
   z-index: 1;
   visibility: visible;
+}
+.cancelOrder-btn-wrapper ~ .scroll-table{
+	bottom:40px;
+}
+.cancelOrder-btn-wrapper {
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+}
+.cancelOrder-btn-wrapper button{
+	width: 90%;
+    margin: auto;
+    display: block;
+    height: 34px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 3px;
+
 }
 </style>

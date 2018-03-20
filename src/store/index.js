@@ -20,6 +20,11 @@ let store = {
             { imgAddr: 'dist/assets/icon/activity-center-icon.png', labelText: '活动中心', id: 9 },
             { imgAddr: 'dist/assets/icon/notice-icon.png', labelText: '公告', id: 10 },
 		],
+		marketList : [],
+		brands : [12],
+		classify: [],
+		toastMsgs : [],
+		showToast : false
 	},
 	getters : {
 		validateLogin : state => {
@@ -32,8 +37,34 @@ let store = {
 		clientName : state => {
 			return state.userInfo.clientName || '--';
 		},
+		subClassify : state => {
+			
+		}
 	},
 	mutations :{
+		showToast (state, msg=""){
+			state.showToast = true;
+			let toastMsg = {};
+			if(typeof msg === 'string'){
+				toastMsg = {
+					msg,
+					delay : 3000,
+					aniTime : '500ms'
+				};
+			}else{
+				toastMsg = msg;
+			}
+			state.toastMsgs.push(toastMsg);
+		},
+		hiddenToast (state){
+			state.showToast = false;
+		},
+		addToastMsg (state,toastMsg){
+			
+		},
+		deleteToastMsg (state, newToastMsgs){
+			
+		},
 		// 添加需要缓存的视图
 		addView (state,view){
 			var index = state.cacheViews.indexOf(view);
@@ -61,8 +92,13 @@ let store = {
 		},
 		delNextRoute (state, route){
 			state.nextRoute = null;
+		},
+		updateBrands (state, newBrands){
+			state.brands = newBrands;
+		},
+		updateClassify (state, newClassify){
+			state.classify = newClassify;
 		}
-		
 	},
 	actions : {
 		
