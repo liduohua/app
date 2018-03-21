@@ -9,7 +9,9 @@ module.exports = {
 		assetsRoot : path.resolve(__dirname,'../dist'),
 		assetsSubDirectory : 'static',
 		assetsPublicPath : '/',
+		devtool : '#source-map',
 		productionSourceMap : true,
+		
 		//因为许多流行的主机，像Surge或者Netlify会对所有的静态资源开启gzip压缩，因此这个选
 		//项默认是关闭的，在设置为true之前，确保进行如下安装：
 		//npm install --save-dev compression-webpack-plugin

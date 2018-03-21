@@ -10,7 +10,7 @@ const config = require('../config');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
-module.exports = merge(baseWebpackConfig,{
+const webpackConfig = merge(baseWebpackConfig,{
 	output : {
 		path : config.build.assetsRoot,
 		filename : utils.assetsPath('js/[name].[chunkhash].js'),
@@ -28,6 +28,7 @@ module.exports = merge(baseWebpackConfig,{
 		new webpack.DefinePlugin({
 			'process.env' : env
 		}),
+		//js压缩
 		new UglifyJsPlugin({
 			uglifyOptions : {
 				compress : {
@@ -58,7 +59,11 @@ module.exports = merge(baseWebpackConfig,{
 				? {safe : true,map : {inline : false}}
 				: {safe : true}
 		}),
+		
 		new webpack.HashedModuleIdsPlugin(),
+		
+		new webpack.optimize.ModuleConcatenationPlugin(),
+		
 		new webpack.optimize.CommonsChunkPlugin({
 			name : 'vendor',
 			minChunks (module){
@@ -91,3 +96,29 @@ module.exports = merge(baseWebpackConfig,{
 	]
 });
 
+if(config.build.productionGzip) {
+	const CompressionWebpackPlugin = require('compression-webpack-plugin')
+	
+	webpackConfig.plugins.push(
+		new CompressionWebpackPlugin({
+			asset: '[path].gz[query]',
+			algorithm: 'gzip',
+			test: new RegExp(
+				'\\.(' +
+				config.build.productionGzipExtension.join('|') +
+				')$'
+			),
+			threshold: 10240,
+			minRatio: 0.8
+		})
+	)
+}
+
+
+
+if(config.build.bundleAnalyzerReport){
+	const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+	webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+}
+
+module.exports = webpackConfig;
