@@ -19,7 +19,7 @@ const versionRequirements = [
 if (shell.which('npm')){
 	versionRequirements.push({
 		name : 'npm',
-		currentVersion : exec('npm -- version'),
+		currentVersion : exec('npm --version'),
 		versionRequirement : packageConfig.engines.npm
 	})
 }
@@ -30,7 +30,7 @@ module.exports = function () {
 	for(let i = 0 ; i < versionRequirements.length; i++){
 		const mod = versionRequirements[i]
 		
-		if(!semver.statisfies(mod.currentVersion, mode.versionRequirement)){
+		if(!semver.satisfies(mod.currentVersion, mod.versionRequirement)){
 			warnings.push(mod.name + ': '+
 				chalk.red(mod.currentVersion) + 'should be ' +
 				chalk.green(mod.versionRequirement)

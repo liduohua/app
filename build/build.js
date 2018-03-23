@@ -1,14 +1,15 @@
 require('./check-versions')();
 
 process.env.NODE_ENV = 'production';
-
+//显示加载中的图标
 const ora = require('ora');
+//删除文件
 const rm = require('rimraf');
 const path = require('path');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const config = require('../config');
-const webpackConfig = require('./webpack.prod.conf');
+const webpackConfig = require('./webpack.pro.conf');
 
 const spinner = ora('building for production...')
 

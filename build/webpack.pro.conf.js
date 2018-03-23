@@ -14,6 +14,7 @@ const webpackConfig = merge(baseWebpackConfig,{
 	output : {
 		path : config.build.assetsRoot,
 		filename : utils.assetsPath('js/[name].[chunkhash].js'),
+		//动态加载的块
 		chunkFilename : utils.assetsPath('js/[id].[chunkhash].js')
 	},
 	devtool : config.build.productionSourceMap ? config.build.devtool : false,
@@ -38,7 +39,7 @@ const webpackConfig = merge(baseWebpackConfig,{
 			sourceMap : config.build.productionSourceMap,
 			parallel : true
 		}),
-		
+		//生成index.html
 		new HtmlWebpackPlugin({
 			filename : config.build.index,
 			template : 'index.html',
@@ -50,18 +51,20 @@ const webpackConfig = merge(baseWebpackConfig,{
 			},
 			chunksSortMode : 'dependency'
 		}),
+		//提取css为单个文件
 		new ExtractTextPlugin({
 			filename : utils.assetsPath('css/[name].[contenthash].css'),
 			allChunks : true
 		}),
+		//优化css ,处理器使用cssnano
 		new OptimizeCSSPlugin({
 			cssProcessorOptions : config.build.productionSourceMap
 				? {safe : true,map : {inline : false}}
 				: {safe : true}
 		}),
-		
+		//使hash基于模块的相对路径生成，默认使用md5算法及取前面4个字符
 		new webpack.HashedModuleIdsPlugin(),
-		
+		//会合并闭包，提高浏览器的运行速度
 		new webpack.optimize.ModuleConcatenationPlugin(),
 		
 		new webpack.optimize.CommonsChunkPlugin({
@@ -84,11 +87,12 @@ const webpackConfig = merge(baseWebpackConfig,{
 			name : 'app',
 			async : 'vendor-async',
 			children : true,
-			minChunks : 3
+			minChunks : 3 
 		}),
+		//复制静态资源
 		new CopyWebpackPlugin([
 			{
-				from : path.resolve(__dirname,'../static'),
+				from : path.resolve(__dirname,'../src/assets'),
 				to : config.build.assetsSubDirectory,
 				ignore : ['.*']
 			}

@@ -44,7 +44,9 @@ const devWebpackConfig = merge(baseWebpackConfig,{
 		new webpack.NamedModulesPlugin(),
 		//new webpack.NoEmitOnErrorsPlugin(),
 		new HtmlWebpackPlugin({
+			//这些值将会注入到模板文件中
 			filename : 'index.html',
+			title : '冻现批',
 			template : 'index.html',
 			inject : true
 		}),
