@@ -11,7 +11,8 @@
 	// import {mapMutations} from 'vuex';
 	import io from 'socket.io-client';
 	import Toast from './components/Toast.vue';
-	export default {
+	console.log(11);
+	export default { 
 		data :() => {
 			return {
 				
