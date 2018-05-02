@@ -15,7 +15,7 @@ const versionRequirements = [
 		versionRequirement : packageConfig.engines.node
 	}
 ]
-
+//判断是否存在npm命令
 if (shell.which('npm')){
 	versionRequirements.push({
 		name : 'npm',

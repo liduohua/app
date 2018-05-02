@@ -1,8 +1,8 @@
-require('./check-versions')();
+require('./check-versions')();//检查版本
 
 process.env.NODE_ENV = 'production';
 //显示加载中的图标
-const ora = require('ora');//显示加载图标的
+const ora = require('ora');//用于显示加载图标的
 //删除文件
 const rm = require('rimraf');//可以优雅的删除文件
 const path = require('path');
@@ -21,7 +21,7 @@ rm(path.join(config.build.assetsRoot,config.build.assetsSubDirectory) , err => {
 	if(err) throw err;
 	// webpack开始编译
 	// webpack starts building ...
-	webpack(webpackConfig,(err,stats) => 
+	webpack(webpackConfig,(err,stats) => {
 		// 关闭加载图标提示
 		// closing loading icon prompt.
 		spinner.stop();

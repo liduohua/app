@@ -17,6 +17,7 @@ const webpackConfig = merge(baseWebpackConfig,{
 		//动态加载的块
 		chunkFilename : utils.assetsPath('js/[id].[chunkhash].js')
 	},
+	
 	devtool : config.build.productionSourceMap ? config.build.devtool : false,
 	module : {
 		rules : utils.styleLoaders({
@@ -27,7 +28,7 @@ const webpackConfig = merge(baseWebpackConfig,{
 	},
 	plugins : [
 		new webpack.DefinePlugin({
-			'process.env' : env
+			'process.env' : '"production"'
 		}),
 		//js压缩
 		new UglifyJsPlugin({
@@ -70,6 +71,8 @@ const webpackConfig = merge(baseWebpackConfig,{
 		new webpack.optimize.CommonsChunkPlugin({
 			name : 'vendor',
 			minChunks (module){
+				
+				console.log(module.response);
 				return (
 					module.resource && 
 					/\.js$/.test(module.resource) && 
