@@ -72,11 +72,11 @@ const webpackConfig = merge(baseWebpackConfig,{
 			name : 'vendor',
 			minChunks (module){
 				
-				console.log(module.response);
+				
 				return (
 					module.resource && 
 					/\.js$/.test(module.resource) && 
-					module.response.indexOf(
+					module.resource.indexOf(
 						path.join(__dirname,'../node_modules')
 					) === 0
 				)

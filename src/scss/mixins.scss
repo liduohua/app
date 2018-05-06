@@ -52,20 +52,21 @@ $gray : #999;
     }
     -webkit-overflow-scrolling : touch;
 }
-/*
- * 细线，在微信钱包中的页面线条都是缩小一倍的，此处参考~V~
- */
-@mixin hairline($position, $color) {
-    @mixin base-css{
+@mixin base-css($color){
         content: '';
         position: absolute;
         display: block;
         z-index: 15;
         background-color: $color;
     }
+/*
+ * 细线，在微信钱包中的页面线条都是缩小一倍的，此处参考~V~
+ */
+@mixin hairline($position, $color) {
+    
     @if($position == 'top' or $position == 'left'){
         &:before {
-            @include base-css;
+            @include base-css($color);
             bottom: auto;
             right: auto;
             left: 0;
@@ -83,7 +84,7 @@ $gray : #999;
         }       
     }@else{
         &:after {
-            @include base-css;
+            @include base-css($color);
             
             transform: scaleY(0.5);
             @if($position == 'bottom'){
