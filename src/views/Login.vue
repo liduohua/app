@@ -155,6 +155,11 @@
 			this.nextRoute = this.$store.state.nextRoute;
 		
 			this.$store.commit('delNextRoute');
+			httpPost('randomCode' ,{
+				
+			}).then((result) => {
+				console.log(result);
+			})
 		},
 		mounted (){
 			
