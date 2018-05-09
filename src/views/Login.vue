@@ -101,12 +101,16 @@
 				if(this.isShow){
 					userInfo = await httpPost('300002' ,{
 						phoneNo : this.phoneNo,
-						phoneCheckCode : this.phoneCheckCode
+						phoneCheckCode : this.phoneCheckCode,
+						checkCode : '11112',
+						tokenId : localStorage.getItem('tokenId')
 					});
 				}else{
 					userInfo = await httpPost('300001' ,{
 						userName : this.userName,
-						password : this.password
+						password : this.password,
+						checkCode : '11112',
+						tokenId : localStorage.getItem('tokenId')
 					});
 				}
 				preloader.hidePreloader(modal);
@@ -155,6 +159,12 @@
 			this.nextRoute = this.$store.state.nextRoute;
 		
 			this.$store.commit('delNextRoute');
+			httpPost('randomCode' ,{
+				
+			}).then(result => {
+				localStorage.setItem('tokenId',result.tokenId);
+			})
+			
 		},
 		mounted (){
 			
