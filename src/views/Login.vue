@@ -109,7 +109,7 @@
 					userInfo = await httpPost('300001' ,{
 						userName : this.userName,
 						password : this.password,
-						checkCode : '11112',
+						checkCode : '1111',
 						tokenId : localStorage.getItem('tokenId')
 					});
 				}

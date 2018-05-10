@@ -55,7 +55,7 @@
 <script>
 	import NavFooter from '../../components/NavFooter.vue';
 	import NavHeader from '../../components/NavHeader.vue';
-	
+	import {httpPost} from '../../api';
 	const Switch = require('../../lib/Switch-es5.js').Switch;
 	export default {
 		name : 'myindex',
@@ -70,7 +70,11 @@
 			this.scrollTop = this.$refs.content.scrollTop;
 		},
 		methods : {
-			exitLogin(e){
+			async exitLogin(e){
+				let result = await httpPost('signOut' ,{
+						tokenId : localStorage.getItem('tokenId')
+					});
+				
 				this.$store.commit('exitLogin');
 				this.$router.push('/login');
 			},
