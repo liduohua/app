@@ -161,10 +161,11 @@
 			this.$store.commit('delNextRoute');
 			httpPost('randomCode' ,{
 				
+
 			}).then(result => {
 				localStorage.setItem('tokenId',result.tokenId);
 			})
-			
+
 		},
 		mounted (){
 			
