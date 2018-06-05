@@ -40,9 +40,17 @@
 			Toast
 		},
 		created (){
+			
 			let socket = io('http://localhost:7002');
 			socket.on('marketlist',(data) => {
 				console.log(data);
+			})
+			socket.emit('subscrible',['11'],function(ack){
+				alert(ack);
+			});
+			
+			socket.on('test',(data) => {
+				alert(data);
 			})
 		}
 	}

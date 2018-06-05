@@ -28,3 +28,4 @@ export function httpGet (url,playload = {}){
 export function httpPost (url,playload = {}){
 	return http(url,{body : playload},'POST');
 }
+
